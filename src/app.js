@@ -171,4 +171,5 @@ function scheduleNotif(sub, notif) {
   })
 }
 
+module.exports = app
 module.exports.handler = serverless(app)
