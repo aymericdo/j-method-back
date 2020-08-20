@@ -5,7 +5,10 @@ const bodyParser = require('body-parser')
 const schedule = require('node-schedule')
 const app = express()
 const Datastore = require('nedb')
+const serverless = require('serverless-http')
 const port = 3000
+
+const router = express.Router();
 
 db = {}
 db.courses = new Datastore({ filename: 'db-courses.json' })
@@ -32,7 +35,7 @@ webpush.setVapidDetails(
   vapidKeys.privateKey,
 )
 
-app.use((req, res, next) => {
+router.use((req, res, next) => {
   if (!req.headers.email) {
     res.sendStatus(401)
   } else {
@@ -40,7 +43,7 @@ app.use((req, res, next) => {
   }
 })
 
-app.post('/api/courses', (req, res) => {
+router.post('/api/courses', (req, res) => {
   const email = req.headers.email
   const course = {
     email,
@@ -51,7 +54,7 @@ app.post('/api/courses', (req, res) => {
   })
 })
 
-app.get('/api/courses', (req, res) => {
+router.get('/api/courses', (req, res) => {
   const email = req.headers.email
 
   db.courses.find({ email }, (err, docs) => {
@@ -59,7 +62,7 @@ app.get('/api/courses', (req, res) => {
   })
 })
 
-app.delete('/api/courses/:courseId', (req, res) => {
+router.delete('/api/courses/:courseId', (req, res) => {
   const email = req.headers.email
   const courseId = req.params.courseId
 
@@ -68,7 +71,7 @@ app.delete('/api/courses/:courseId', (req, res) => {
   })
 })
 
-app.post('/api/notifications/sub', (req, res) => {
+router.post('/api/notifications/sub', (req, res) => {
   const email = req.headers.email
   const sub = req.body
   
@@ -83,7 +86,7 @@ app.post('/api/notifications/sub', (req, res) => {
   })
 })
 
-app.post('/api/notifications', (req, res) => {
+router.post('/api/notifications', (req, res) => {
   const email = req.headers.email
   const notifications = req.body
 
@@ -101,14 +104,14 @@ app.post('/api/notifications', (req, res) => {
   res.status(200).json(true)
 })
 
-app.get('/api/notifications', (req, res) => {
+router.get('/api/notifications', (req, res) => {
   const email = req.headers.email
   db.notifications.find({ 'course.email': email }).sort({ date: 1 }).exec((err, docs) => {
     res.status(200).json(docs)
   })
 })
 
-app.delete('/api/notifications/:notificationId', (req, res) => {
+router.delete('/api/notifications/:notificationId', (req, res) => {
   const email = req.headers.email
   const notificationId = req.params.notificationId
   db.notifications.remove({ 'course.email': email, _id: notificationId }, (err, numRemoved) => {
@@ -128,6 +131,8 @@ db.notifications.find({}, (err, notifs) => {
     })
   })
 })
+
+app.use(`/.netlify/functions/api`, router)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
@@ -165,3 +170,5 @@ function scheduleNotif(sub, notif) {
     })
   })
 }
+
+module.exports.handler = serverless(app)
