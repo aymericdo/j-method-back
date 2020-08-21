@@ -159,7 +159,12 @@ app.use((req, res, next) => {
   }
 });
 
-app.use(cors());
+const corsOpt = {
+  origin: '*',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
+};
+
+app.use(cors(corsOpt));
 app.use(bodyParser.json());
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
