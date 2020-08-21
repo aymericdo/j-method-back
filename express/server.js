@@ -7,6 +7,7 @@ const serverless = require('serverless-http');
 const app = express();
 const Datastore = require('nedb');
 const bodyParser = require('body-parser');
+const cors = require('cors')
 
 const db = {};
 db.courses = new Datastore({ filename: 'data/db-courses.json' });
