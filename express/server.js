@@ -1,5 +1,4 @@
 'use strict';
-
 const express = require('express');
 const path = require('path');
 const webpush = require('web-push');
@@ -9,6 +8,7 @@ const Datastore = require('nedb');
 const bodyParser = require('body-parser');
 const schedule = require('node-schedule');
 const cors = require('cors')
+require('dotenv').config()
 
 const db = {};
 db.courses = new Datastore({ filename: 'data/db-courses.json' });
@@ -24,6 +24,13 @@ const vapidKeys = {
 };
 
 app.use(cors());
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", process.env.FRONT_ADDRESS); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+console.log(process.env.FRONT_ADDRESS)
 
 webpush.setVapidDetails(
   'mailto:aymeric.dominique@gmail.com',
