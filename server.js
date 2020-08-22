@@ -87,7 +87,7 @@ router.delete('/courses/:courseId', (req, res) => {
 router.post('/notifications/sub', (req, res) => {
   const email = req.headers.email
   const sub = req.body
-  
+
   SubscriptionModel.countDocuments({ email, 'sub.endpoint': sub.endpoint }, function (err, count) {
     if (count === 0) {
       const subscription = new SubscriptionModel({
@@ -124,10 +124,14 @@ router.post('/notifications', (req, res) => {
 
 router.get('/notifications', (req, res) => {
   const email = req.headers.email
-  NotificationModel.find({ 'course.email': email }).distinct('date').sort({ date: 1 }).exec((err, docs) => {
-    res.status(200).json(docs)
-  })
-})
+  NotificationModel.aggregate(
+    { $match: { 'course.email': email } },
+    { $sort: { 'date': 1 } },
+    { $group: { 'date': '$postId'}}, (err, docs) => {
+      console.log(docs);
+      res.status(200).json(docs);
+  });
+});
 
 router.delete('/notifications/:notificationId', (req, res) => {
   const email = req.headers.email
