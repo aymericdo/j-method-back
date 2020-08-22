@@ -18,12 +18,12 @@ const CourseSchema = new mongoose.Schema({
   description: { type: String, required: false },
   email: { type: String, required: true },
   difficulties: { type: String, required: true },
-  date: { type: String, required: true },
+  date: { type: Date, required: true },
   ids: { type: [Number], required: false },
 });
 const NotificationSchema = new mongoose.Schema({
   course: { type: CourseSchema, required: true },
-  date: { type: String, required: true },
+  date: { type: Date, required: true },
 });
 const SubscriptionSchema = new mongoose.Schema({
   email: { type: String, required: true },
@@ -87,7 +87,7 @@ router.delete('/courses/:courseId', (req, res) => {
 router.post('/notifications/sub', (req, res) => {
   const email = req.headers.email
   const sub = req.body
-
+  
   SubscriptionModel.countDocuments({ email, 'sub.endpoint': sub.endpoint }, function (err, count) {
     if (count === 0) {
       const subscription = new SubscriptionModel({
@@ -105,31 +105,22 @@ router.post('/notifications/sub', (req, res) => {
 })
 
 router.post('/notifications', (req, res) => {
-  const email = req.headers.email
   const notifications = req.body
 
-  SubscriptionModel.find({ email }, (err, docs) => {
-    docs.forEach(doc => {
-      notifications.forEach((notif) => {
-        new NotificationModel(notif).save((err, newDoc) => {
-          const j = scheduleNotif(doc.sub, newDoc)
-          console.log(j)
-        })
-      })
-    })
-  })
+  notifications.forEach((notif) => {
+    new NotificationModel(notif).save((err, newDoc) => {
+      const j = scheduleNotif(newDoc)
+      console.log(j)
+    });
+  });
 
   res.status(200).json(true)
-})
+});
 
 router.get('/notifications', (req, res) => {
   const email = req.headers.email
-  NotificationModel.aggregate([
-    { $match: { 'course.email': email } },
-    { $sort: { 'date': 1 } },
-    { $group: { '_id': '$date' }}
-  ], (err, docs) => {
-      res.status(200).json(docs);
+  NotificationModel.find({ 'course.email': email }).sort({ date: 1 }).exec((err, docs) => {
+    res.status(200).json(docs);
   });
 });
 
@@ -142,19 +133,19 @@ router.delete('/notifications/:notificationId', (req, res) => {
   // j.cancel()
 });
 
-NotificationModel.find({}, (err, notifs) => {
-  if (!notifs.length) return
+// moment().startOf('day')
+const start = new Date();
+start.setHours(0,0,0,0);
 
-  SubscriptionModel.find({ email: notifs[0].course.email }, (err, docs) => {
-    notifs.forEach((notif) => {
-      docs.forEach((doc) => {
-        scheduleNotif(doc.sub, notif)
-      })
-    })
+NotificationModel.find({ date: { $gte: start } }, (err, notifs) => {
+  if (!notifs.length) return;
+
+  notifs.forEach((notif) => {
+    scheduleNotif(notif);
   });
 });
 
-function scheduleNotif(sub, notif) {
+function scheduleNotif(notif) {
   const date = new Date(notif.date)
 
   return schedule.scheduleJob(date, () => {
@@ -176,7 +167,11 @@ function scheduleNotif(sub, notif) {
     }
 
     new Promise((resolve, reject) => {
-      resolve(webpush.sendNotification(sub, JSON.stringify(notificationPayload)))
+      SubscriptionModel.find({ email: notif.course.email }, (err, docs) => {
+        docs.forEach((doc) => {
+          resolve(webpush.sendNotification(doc.sub, JSON.stringify(notificationPayload)));
+        });
+      });
     })
     .then(() => {
       console.log('Notification sent')
