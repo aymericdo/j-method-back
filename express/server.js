@@ -1,8 +1,6 @@
 'use strict';
 const express = require('express');
-const path = require('path');
 const webpush = require('web-push');
-const serverless = require('serverless-http');
 const app = express();
 const Datastore = require('nedb');
 const bodyParser = require('body-parser');
@@ -48,8 +46,10 @@ webpush.setVapidDetails(
   vapidKeys.privateKey,
 );
 
+app.use(cors());
+
 const router = express.Router();
-router.post('/api/courses', (req, res) => {
+router.post('/courses', (req, res) => {
   const email = req.headers.email
   const course = {
     email,
@@ -60,7 +60,7 @@ router.post('/api/courses', (req, res) => {
   })
 })
 
-router.get('/api/courses', (req, res) => {
+router.get('/courses', (req, res) => {
   const email = req.headers.email
 
   db.courses.find({ email }, (err, docs) => {
@@ -68,7 +68,7 @@ router.get('/api/courses', (req, res) => {
   })
 })
 
-router.delete('/api/courses/:courseId', (req, res) => {
+router.delete('/courses/:courseId', (req, res) => {
   const email = req.headers.email
   const courseId = req.params.courseId
 
@@ -77,7 +77,7 @@ router.delete('/api/courses/:courseId', (req, res) => {
   })
 })
 
-router.post('/api/notifications/sub', (req, res) => {
+router.post('/notifications/sub', (req, res) => {
   const email = req.headers.email
   const sub = req.body
   
@@ -92,7 +92,7 @@ router.post('/api/notifications/sub', (req, res) => {
   })
 })
 
-router.post('/api/notifications', (req, res) => {
+router.post('/notifications', (req, res) => {
   const email = req.headers.email
   const notifications = req.body
 
@@ -110,14 +110,14 @@ router.post('/api/notifications', (req, res) => {
   res.status(200).json(true)
 })
 
-router.get('/api/notifications', (req, res) => {
+router.get('/notifications', (req, res) => {
   const email = req.headers.email
   db.notifications.find({ 'course.email': email }).sort({ date: 1 }).exec((err, docs) => {
     res.status(200).json(docs)
   })
 })
 
-router.delete('/api/notifications/:notificationId', (req, res) => {
+router.delete('/notifications/:notificationId', (req, res) => {
   const email = req.headers.email
   const notificationId = req.params.notificationId
   db.notifications.remove({ 'course.email': email, _id: notificationId }, (err, numRemoved) => {
@@ -180,8 +180,6 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.json());
-app.use('/.netlify/functions/server', router);  // path must route to lambda
-app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
+app.use('/api', router);  // path must route to lambda
 
 module.exports = app;
-module.exports.handler = serverless(app);

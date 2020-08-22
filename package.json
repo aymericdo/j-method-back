@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "functions/server.js",
   "scripts": {
-    "build": "netlify-lambda build express",
+    "build": "rimraf ./build",
     "start": "nodemon server-local.js"
   },
   "repository": {
@@ -21,8 +21,6 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "nedb": "^1.8.0",
-    "node-schedule": "^1.3.2",
-    "serverless-http": "^2.3.0",
     "web-push": "^3.4.4"
   },
   "nodemonConfig": {
@@ -31,7 +29,7 @@
     ]
   },
   "devDependencies": {
-    "netlify-lambda": "^1.6.3",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "rimraf": "^3.0.0"
   }
 }
