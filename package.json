@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "main": "functions/server.js",
   "scripts": {
-    "build": "rimraf ./build",
-    "start": "nodemon server-local.js"
+    "start": "node server.js",
+    "watch": "nodemon server.js"
   },
   "repository": {
     "type": "git",

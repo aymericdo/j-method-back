@@ -182,4 +182,4 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 app.use('/api', router);  // path must route to lambda
 
-module.exports = app;
+app.listen(3000, () => console.log('Local app listening on port 3000!'));
