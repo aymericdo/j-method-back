@@ -2,19 +2,44 @@
 const express = require('express');
 const webpush = require('web-push');
 const app = express();
-const Datastore = require('nedb');
 const bodyParser = require('body-parser');
 const schedule = require('node-schedule');
 const cors = require('cors')
 require('dotenv').config()
+const mongoose = require('mongoose');
 
-const db = {};
-db.courses = new Datastore({ filename: 'data/db-courses.json' });
-db.notifications = new Datastore({ filename: 'data/db-notifications.json' });
-db.subscriptions = new Datastore({ filename: 'data/db-subscriptions.json' });
-db.courses.loadDatabase();
-db.notifications.loadDatabase();
-db.subscriptions.loadDatabase();
+const router = express.Router();
+
+const uri = process.env.MONGODB_URI;
+const client = mongoose.createConnection(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const CourseSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  description: { type: String, required: false },
+  email: { type: String, required: true },
+  difficulties: { type: String, required: true },
+  date: { type: String, required: true },
+  ids: { type: [Number], required: false },
+});
+const NotificationSchema = new mongoose.Schema({
+  course: { type: CourseSchema, required: true },
+  date: { type: String, required: true },
+});
+const SubscriptionSchema = new mongoose.Schema({
+  email: { type: String, required: true },
+  sub: {
+    endpoint: { type: String, required: true },
+    expirationTime: { type: String, required: false },
+    keys: {
+      auth: { type: String, required: true },
+      p256dh: { type: String, required: true },
+    },
+  }
+});
+
+const CourseModel = client.model('courses', CourseSchema);
+const NotificationModel = client.model('notifications', NotificationSchema);
+const SubscriptionModel = client.model('subscriptions', SubscriptionSchema);
 
 const vapidKeys = {
   publicKey: "BA0IrWNjeSUg-vrORw1qaiMZ4-echF259O25I42NywBlbC3f7OzdiJjooH27nOzjtID5EoQ4pZO1wOo7lzwi7iQ",
@@ -29,22 +54,23 @@ webpush.setVapidDetails(
 
 app.use(cors());
 
-const router = express.Router();
 router.post('/courses', (req, res) => {
   const email = req.headers.email
-  const course = {
+  const course = new CourseModel({
     email,
     ...req.body,
-  }
-  db.courses.insert(course, (err, newDoc) => {
+  });
+
+  course.save(err => {
     res.status(200).json(course)
+    mongoose.connection.close();
   })
 })
 
 router.get('/courses', (req, res) => {
   const email = req.headers.email
 
-  db.courses.find({ email }, (err, docs) => {
+  CourseModel.find({ email }, (err, docs) => {
     res.status(200).json(docs)
   })
 })
@@ -53,7 +79,7 @@ router.delete('/courses/:courseId', (req, res) => {
   const email = req.headers.email
   const courseId = req.params.courseId
 
-  db.courses.remove({ email, _id: courseId }, (err, numRemoved) => {
+  CourseModel.deleteOne({ email, _id: courseId }, (err, numRemoved) => {
     res.status(200).json(true)
   })
 })
@@ -62,14 +88,17 @@ router.post('/notifications/sub', (req, res) => {
   const email = req.headers.email
   const sub = req.body
   
-  db.subscriptions.count({ email, 'sub.endpoint': sub.endpoint }, function (err, count) {
+  SubscriptionModel.countDocuments({ email, 'sub.endpoint': sub.endpoint }, function (err, count) {
     if (count === 0) {
-      db.subscriptions.insert({
+      const subscription = new SubscriptionModel({
         email,
         sub,
       })
+
+      subscription.save(() => {
+        res.status(200).json(true)
+      });
     }
-    res.status(200).json(true)
   })
 })
 
@@ -77,10 +106,10 @@ router.post('/notifications', (req, res) => {
   const email = req.headers.email
   const notifications = req.body
 
-  db.subscriptions.find({ email }, (err, docs) => {
+  SubscriptionModel.find({ email }, (err, docs) => {
     docs.forEach(doc => {
       notifications.forEach((notif) => {
-        db.notifications.insert(notif, (err, newDoc) => {
+        new NotificationModel(notif).save((err, newDoc) => {
           const j = scheduleNotif(doc.sub, newDoc)
           console.log(j)
         })
@@ -93,7 +122,7 @@ router.post('/notifications', (req, res) => {
 
 router.get('/notifications', (req, res) => {
   const email = req.headers.email
-  db.notifications.find({ 'course.email': email }).sort({ date: 1 }).exec((err, docs) => {
+  NotificationModel.find({ 'course.email': email }).sort({ date: 1 }).exec((err, docs) => {
     res.status(200).json(docs)
   })
 })
@@ -101,16 +130,16 @@ router.get('/notifications', (req, res) => {
 router.delete('/notifications/:notificationId', (req, res) => {
   const email = req.headers.email
   const notificationId = req.params.notificationId
-  db.notifications.remove({ 'course.email': email, _id: notificationId }, (err, numRemoved) => {
+  NotificationModel.deleteOne({ 'course.email': email, _id: notificationId }, (err, numRemoved) => {
     res.status(200).json(true)
   })
   // j.cancel()
 });
 
-db.notifications.find({}, (err, notifs) => {
+NotificationModel.find({}, (err, notifs) => {
   if (!notifs.length) return
 
-  db.subscriptions.find({ email: notifs[0].course.email }, (err, docs) => {
+  SubscriptionModel.find({ email: notifs[0].course.email }, (err, docs) => {
     notifs.forEach((notif) => {
       docs.forEach((doc) => {
         scheduleNotif(doc.sub, notif)
