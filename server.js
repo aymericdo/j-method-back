@@ -124,11 +124,11 @@ router.post('/notifications', (req, res) => {
 
 router.get('/notifications', (req, res) => {
   const email = req.headers.email
-  NotificationModel.aggregate(
+  NotificationModel.aggregate([
     { $match: { 'course.email': email } },
     { $sort: { 'date': 1 } },
-    { $group: { 'date': '$postId'}}, (err, docs) => {
-      console.log(docs);
+    { $group: { '_id': '$date' }}
+  ], (err, docs) => {
       res.status(200).json(docs);
   });
 });
