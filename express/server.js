@@ -23,11 +23,7 @@ const vapidKeys = {
   privateKey:"Wev87nA92dTFhnr9HFTTDDS7zE-4GMtuxFHS8NokVCU",
 };
 
-const corsOpt = {
-  origin: '*',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
-};
-app.use(cors(corsOpt));
+app.use(cors());
 
 webpush.setVapidDetails(
   'mailto:aymeric.dominique@gmail.com',
