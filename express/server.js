@@ -7,6 +7,7 @@ const serverless = require('serverless-http');
 const app = express();
 const Datastore = require('nedb');
 const bodyParser = require('body-parser');
+const schedule = require('node-schedule');
 const cors = require('cors')
 
 const db = {};
@@ -21,6 +22,12 @@ const vapidKeys = {
   publicKey: "BA0IrWNjeSUg-vrORw1qaiMZ4-echF259O25I42NywBlbC3f7OzdiJjooH27nOzjtID5EoQ4pZO1wOo7lzwi7iQ",
   privateKey:"Wev87nA92dTFhnr9HFTTDDS7zE-4GMtuxFHS8NokVCU",
 };
+
+const corsOpt = {
+  origin: '*',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
+};
+app.use(cors(corsOpt));
 
 webpush.setVapidDetails(
   'mailto:aymeric.dominique@gmail.com',
@@ -159,12 +166,6 @@ app.use((req, res, next) => {
   }
 });
 
-const corsOpt = {
-  origin: '*',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
-};
-
-app.use(cors(corsOpt));
 app.use(bodyParser.json());
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
