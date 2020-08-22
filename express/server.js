@@ -30,8 +30,6 @@ app.use((req, res, next) => {
   next();
 });
 
-console.log(process.env.FRONT_ADDRESS)
-
 webpush.setVapidDetails(
   'mailto:aymeric.dominique@gmail.com',
   vapidKeys.publicKey,
