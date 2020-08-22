@@ -124,7 +124,7 @@ router.post('/notifications', (req, res) => {
 
 router.get('/notifications', (req, res) => {
   const email = req.headers.email
-  NotificationModel.find({ 'course.email': email }).sort({ date: 1 }).exec((err, docs) => {
+  NotificationModel.find({ 'course.email': email }).distinct('date').sort({ date: 1 }).exec((err, docs) => {
     res.status(200).json(docs)
   })
 })
