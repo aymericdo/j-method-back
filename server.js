@@ -98,6 +98,8 @@ router.post('/notifications/sub', (req, res) => {
       subscription.save(() => {
         res.status(200).json(true)
       });
+    } else {
+      res.status(200).json(true)
     }
   })
 })
