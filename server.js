@@ -53,6 +53,8 @@ webpush.setVapidDetails(
   vapidKeys.privateKey,
 );
 
+const schedulers = {};
+
 app.use(cors());
 
 router.post('/courses', (req, res) => {
@@ -106,16 +108,21 @@ router.post('/notifications/sub', (req, res) => {
 })
 
 router.post('/notifications', (req, res) => {
-  const notifications = req.body
+  const email = req.headers.email
+  const notifications = req.body;
+  const now = new Date();
 
-  notifications.forEach((notif) => {
-    new NotificationModel(notif).save((err, newDoc) => {
-      const j = scheduleNotif(newDoc)
-      console.log(j)
+  NotificationModel.deleteMany({ 'course.email': email, date: { $gte: now } }, (err) => {
+    deleteInScheduler(email);
+    notifications.forEach((notif) => {
+      new NotificationModel(notif).save((err, newDoc) => {
+        const j = scheduleNotif(newDoc)
+        appendInScheduler(email, j);
+      });
     });
-  });
 
-  res.status(200).json(true)
+    res.status(200).json(true)
+  });
 });
 
 router.get('/notifications', (req, res) => {
@@ -128,21 +135,19 @@ router.get('/notifications', (req, res) => {
 router.delete('/notifications/:notificationId', (req, res) => {
   const email = req.headers.email
   const notificationId = req.params.notificationId
-  NotificationModel.deleteOne({ 'course.email': email, _id: notificationId }, (err, numRemoved) => {
-    res.status(200).json(true)
-  })
-  // j.cancel()
+  NotificationModel.deleteOne({ 'course.email': email, _id: notificationId }, (err) => {
+    deleteInScheduler(email);
+    res.status(200).json(true);
+  });
 });
 
-// moment().startOf('day')
-const start = new Date();
-start.setHours(0,0,0,0);
-
-NotificationModel.find({ date: { $gte: start } }, (err, notifs) => {
+const now = new Date();
+NotificationModel.find({ date: { $gte: now } }, (err, notifs) => {
   if (!notifs.length) return;
 
   notifs.forEach((notif) => {
-    scheduleNotif(notif);
+    const j = scheduleNotif(notif);
+    appendInScheduler(notif.course.email, j);
   });
 });
 
@@ -181,6 +186,22 @@ function scheduleNotif(notif) {
       console.error("Error sending notification, reason: ", err)
     })
   })
+}
+
+function appendInScheduler(email, j) {
+  if (schedulers.hasOwnProperty(email)) {
+    schedulers[email].push(j);
+  } else {
+    schedulers[email] = [];
+    schedulers[email].push(j);
+  }
+}
+
+function deleteInScheduler(email) {
+  if (schedulers.hasOwnProperty(email)) {
+    schedulers[email].forEach(j => j.cancel());
+    delete schedulers[email];
+  }
 }
 
 app.use((req, res, next) => {
