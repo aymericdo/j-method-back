@@ -24,6 +24,7 @@ const CourseSchema = new mongoose.Schema({
 const NotificationSchema = new mongoose.Schema({
   course: { type: CourseSchema, required: true },
   date: { type: Date, required: true },
+  durationBefore: { type: Number, required: true },
 });
 const SubscriptionSchema = new mongoose.Schema({
   email: { type: String, required: true },
@@ -153,15 +154,15 @@ function scheduleNotif(notif) {
       notification: {
         title: notif.course.name,
         body: notif.course.description,
-        icon: "assets/main-page-logo-small-hat.png",
-        vibrate: [100, 50, 100],
+        icon: "assets/icons/icon-128x128.png",
+        vibrate: [500,110,500,110,450,110,200,110,170,40,450,110,200,110,170,40,500],
         data: {
           dateOfArrival: Date.now(),
           primaryKey: 1
         },
         actions: [{
-          action: "explore",
-          title: "Go to the site"
+          action: "nextCourse",
+          title: "Voir le cours suivant"
         }],
       },
     }
