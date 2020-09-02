@@ -19,7 +19,7 @@ const CourseSchema = new mongoose.Schema({
   email: { type: String, required: true },
   difficulties: { type: String, required: true },
   date: { type: Date, required: true },
-  ids: { type: [Number], required: false },
+  ids: { type: [String], required: false },
 });
 const NotificationSchema = new mongoose.Schema({
   course: { type: CourseSchema, required: true },
