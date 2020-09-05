@@ -7,6 +7,7 @@ const schedule = require('node-schedule');
 const cors = require('cors')
 require('dotenv').config()
 const mongoose = require('mongoose');
+const moment = require('moment');
 
 const router = express.Router();
 
@@ -25,6 +26,7 @@ const NotificationSchema = new mongoose.Schema({
   course: { type: CourseSchema, required: true },
   date: { type: Date, required: true },
   durationBefore: { type: Number, required: true },
+  isOnPauseSince: { type: Date, required: false },
 });
 const SubscriptionSchema = new mongoose.Schema({
   email: { type: String, required: true },
@@ -127,8 +129,49 @@ router.post('/notifications', (req, res) => {
 
 router.get('/notifications', (req, res) => {
   const email = req.headers.email
-  NotificationModel.find({ 'course.email': email }).sort({ date: 1 }).exec((err, docs) => {
+  const now = new Date();
+  NotificationModel.find({ 'course.email': email, date: { $gte: now } }).sort({ date: 1 }).exec((err, docs) => {
     res.status(200).json(docs);
+  });
+});
+
+router.post('/notifications/pause', (req, res) => {
+  const email = req.headers.email;
+  const now = new Date(req.headers.now);
+  NotificationModel.findOne({ 'course.email': email, date: { $gte: now } }).sort({ date: -1 }).exec((err, doc) => {
+    NotificationModel.updateMany({ 'course.email': email, date: { $gte: now } }, { isOnPauseSince: doc.isOnPauseSince ? null : now }, (err) => {
+      NotificationModel.find({ 'course.email': email, date: { $gte: now } }).sort({ date: 1 }).exec((err, notifications) => {
+        const notifs = [];
+        if (doc.isOnPauseSince && notifications.length) {
+          const currentDate = moment(notifications[0].date);
+          notifications.forEach((n, index) => {
+            notifs.push({
+              ...n._doc,
+              date: index === 0
+                ? currentDate.add(moment(now).diff(moment(doc.isOnPauseSince), 'seconds'), 'seconds').format()
+                : currentDate.add(n.durationBefore, 'minutes').format(),
+              isOnPauseSince: null,
+            });
+          });
+
+          notifs.forEach(async notif => {
+            await NotificationModel.updateOne({ 'course.email': email, _id: notif._id }, { date: notif.date });
+          });
+          
+          notifs.forEach((notif) => {
+            const j = scheduleNotif(notif);
+            appendInScheduler(email, j);
+          });
+        } else {
+          notifications.forEach(n => {
+            notifs.push(n);
+          });
+          deleteInScheduler(email);
+        }
+        
+        res.status(200).json(notifs);
+      });
+    });
   });
 });
 
@@ -142,7 +185,7 @@ router.delete('/notifications/:notificationId', (req, res) => {
 });
 
 const now = new Date();
-NotificationModel.find({ date: { $gte: now } }, (err, notifs) => {
+NotificationModel.find({ date: { $gte: now }, isOnPauseSince: null }, (err, notifs) => {
   if (!notifs.length) return;
 
   notifs.forEach((notif) => {
