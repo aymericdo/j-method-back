@@ -89,6 +89,12 @@ router.delete('/courses/:courseId', (req, res) => {
   })
 })
 
+const notificationRequest = (email) => {
+  const now = new Date();
+  return { $or:[{ 'course.email': email, date: { $gte: now }, isOnPauseSince: null }, { 'course.email': email, isOnPauseSince: { $ne: null } }] }
+}
+
+
 router.post('/notifications/sub', (req, res) => {
   const email = req.headers.email
   const sub = req.body
@@ -114,7 +120,7 @@ router.post('/notifications', (req, res) => {
   const notifications = req.body;
   const now = new Date();
 
-  NotificationModel.deleteMany({ 'course.email': email, date: { $gte: now } }, (err) => {
+  NotificationModel.deleteMany(notificationRequest(email), (err) => {
     deleteInScheduler(email);
     notifications.forEach((notif) => {
       new NotificationModel(notif).save((err, newDoc) => {
@@ -129,8 +135,7 @@ router.post('/notifications', (req, res) => {
 
 router.get('/notifications', (req, res) => {
   const email = req.headers.email
-  const now = new Date();
-  NotificationModel.find({ 'course.email': email, date: { $gte: now } }).sort({ date: 1 }).exec((err, docs) => {
+  NotificationModel.find(notificationRequest(email)).sort({ date: 1 }).exec((err, docs) => {
     res.status(200).json(docs);
   });
 });
@@ -138,39 +143,45 @@ router.get('/notifications', (req, res) => {
 router.post('/notifications/pause', (req, res) => {
   const email = req.headers.email;
   const now = new Date(req.headers.now);
-  NotificationModel.findOne({ 'course.email': email, date: { $gte: now } }).sort({ date: -1 }).exec((err, doc) => {
-    NotificationModel.updateMany({ 'course.email': email, date: { $gte: now } }, { isOnPauseSince: doc.isOnPauseSince ? null : now }, (err) => {
-      NotificationModel.find({ 'course.email': email, date: { $gte: now } }).sort({ date: 1 }).exec((err, notifications) => {
-        const notifs = [];
-        if (doc.isOnPauseSince && notifications.length) {
-          const currentDate = moment(notifications[0].date);
-          notifications.forEach((n, index) => {
-            notifs.push({
-              ...n._doc,
-              date: index === 0
-                ? currentDate.add(moment(now).diff(moment(doc.isOnPauseSince), 'seconds'), 'seconds').format()
-                : currentDate.add(n.durationBefore, 'minutes').format(),
-              isOnPauseSince: null,
-            });
+  NotificationModel.findOne(notificationRequest(email)).sort({ date: -1 }).exec((err, doc) => {
+    NotificationModel.find(notificationRequest(email)).sort({ date: 1 }).exec((err, notifications) => {
+      const notifs = [];
+      if (doc.isOnPauseSince && notifications.length) {
+        const currentDate = moment(notifications[0].date);
+        notifications.forEach((n, index) => {
+          notifs.push({
+            ...n._doc,
+            date: index === 0
+              ? currentDate.add(moment(now).diff(moment(doc.isOnPauseSince), 'seconds'), 'seconds').format()
+              : currentDate.add(n.durationBefore, 'minutes').format(),
+            isOnPauseSince: null,
           });
+        });
 
-          notifs.forEach(async notif => {
-            await NotificationModel.updateOne({ 'course.email': email, _id: notif._id }, { date: notif.date });
-          });
-          
-          notifs.forEach((notif) => {
-            const j = scheduleNotif(notif);
-            appendInScheduler(email, j);
-          });
-        } else {
-          notifications.forEach(n => {
-            notifs.push(n);
-          });
-          deleteInScheduler(email);
-        }
+        notifs.forEach(async notif => {
+          await NotificationModel.updateOne({ 'course.email': email, _id: notif._id }, { date: notif.date, isOnPauseSince: null });
+        });
         
-        res.status(200).json(notifs);
-      });
+        notifs.forEach((notif) => {
+          const j = scheduleNotif(notif);
+          appendInScheduler(email, j);
+        });
+      } else {
+        notifications.forEach(n => {
+          notifs.push({
+            ...n._doc,
+            isOnPauseSince: now,
+          });
+        });
+
+        notifs.forEach(async notif => {
+          await NotificationModel.updateOne({ 'course.email': email, _id: notif._id }, { isOnPauseSince: now });
+        });
+
+        deleteInScheduler(email);
+      }
+
+      res.status(200).json(notifs);
     });
   });
 });
