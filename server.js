@@ -11,6 +11,11 @@ const moment = require('moment');
 
 const router = express.Router();
 
+app.use(cors());
+app.use(express.json({
+    type: ['application/json', 'text/plain']
+}));
+
 const uri = process.env.MONGODB_URI;
 const client = mongoose.createConnection(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -56,11 +61,6 @@ webpush.setVapidDetails(
 );
 
 const schedulers = {};
-
-app.use(cors());
-app.use(express.json({
-    type: ['application/json', 'text/plain']
-}));
 
 router.post('/courses', (req, res) => {
   const email = req.headers.email
