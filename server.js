@@ -58,6 +58,9 @@ webpush.setVapidDetails(
 const schedulers = {};
 
 app.use(cors());
+app.use(express.json({
+    type: ['application/json', 'text/plain']
+}));
 
 router.post('/courses', (req, res) => {
   const email = req.headers.email
