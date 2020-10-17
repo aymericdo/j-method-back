@@ -8,6 +8,7 @@ const cors = require('cors')
 require('dotenv').config()
 const mongoose = require('mongoose');
 const moment = require('moment');
+const PORT = process.env.PORT || 8080;
 
 const router = express.Router();
 
@@ -307,4 +308,6 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 app.use('/api', router);  // path must route to lambda
 
-app.listen(process.env.PORT || 3000, () => console.log(`Local app listening on port ${process.env.PORT || 3000}!`));
+app.set('port', PORT);
+
+app.listen(PORT, () => console.log(`Local app listening on port ${process.env.PORT || 3000}!`));
