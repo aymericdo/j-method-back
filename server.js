@@ -123,7 +123,7 @@ router.post('/rush', (req, res) => {
 router.delete('/rush', (req, res) => {
   const email = req.headers.email
 
-  RushModel.delete({ email }, (err, numRemoved) => {
+  RushModel.deleteMany({ email }, (err, numRemoved) => {
     res.status(200).json(true)
   })
 })
