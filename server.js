@@ -39,7 +39,6 @@ const RushSchema = new mongoose.Schema({
   startDate: { type: Date, required: true },
   endDate: { type: Date, required: true },
   ids: { type: [String], required: false },
-  createdAt: { type: Date, required: true },
 }, { timestamps: true });
 const SubscriptionSchema = new mongoose.Schema({
   email: { type: String, required: true },
