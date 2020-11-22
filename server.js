@@ -39,7 +39,8 @@ const RushSchema = new mongoose.Schema({
   startDate: { type: Date, required: true },
   endDate: { type: Date, required: true },
   ids: { type: [String], required: false },
-});
+  createdAt: { type: Date, required: true },
+}, { timestamps: true });
 const SubscriptionSchema = new mongoose.Schema({
   email: { type: String, required: true },
   sub: {
@@ -102,7 +103,7 @@ router.delete('/courses/:courseId', (req, res) => {
 router.get('/rush', (req, res) => {
   const email = req.headers.email
 
-  RushModel.findOne({ email }, (err, doc) => {
+  RushModel.findOne({ email }).sort({ created_at: -1 }).exec((err, doc) => {
     res.status(200).json(doc)
   })
 })
@@ -122,7 +123,7 @@ router.post('/rush', (req, res) => {
 router.delete('/rush', (req, res) => {
   const email = req.headers.email
 
-  RushModel.deleteOne({ email }, (err, numRemoved) => {
+  RushModel.delete({ email }, (err, numRemoved) => {
     res.status(200).json(true)
   })
 })
@@ -156,7 +157,6 @@ router.post('/notifications/sub', (req, res) => {
 router.post('/notifications', (req, res) => {
   const email = req.headers.email
   const notifications = req.body;
-  const now = new Date();
 
   NotificationModel.deleteMany(notificationRequest(email), (err) => {
     deleteInScheduler(email);
