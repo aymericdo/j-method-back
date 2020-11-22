@@ -34,6 +34,12 @@ const NotificationSchema = new mongoose.Schema({
   durationBefore: { type: Number, required: true },
   isOnPauseSince: { type: Date, required: false },
 });
+const RushSchema = new mongoose.Schema({
+  email: { type: String, required: true },
+  startDate: { type: Date, required: true },
+  endDate: { type: Date, required: true },
+  ids: { type: [String], required: false },
+});
 const SubscriptionSchema = new mongoose.Schema({
   email: { type: String, required: true },
   sub: {
@@ -48,6 +54,7 @@ const SubscriptionSchema = new mongoose.Schema({
 
 const CourseModel = client.model('courses', CourseSchema);
 const NotificationModel = client.model('notifications', NotificationSchema);
+const RushModel = client.model('rush', RushSchema);
 const SubscriptionModel = client.model('subscriptions', SubscriptionSchema);
 
 const vapidKeys = {
@@ -72,7 +79,6 @@ router.post('/courses', (req, res) => {
 
   course.save(err => {
     res.status(200).json(course)
-    mongoose.connection.close();
   })
 })
 
@@ -89,6 +95,34 @@ router.delete('/courses/:courseId', (req, res) => {
   const courseId = req.params.courseId
 
   CourseModel.deleteOne({ email, _id: courseId }, (err, numRemoved) => {
+    res.status(200).json(true)
+  })
+})
+
+router.get('/rush', (req, res) => {
+  const email = req.headers.email
+
+  RushModel.findOne({ email }, (err, doc) => {
+    res.status(200).json(doc)
+  })
+})
+
+router.post('/rush', (req, res) => {
+  const email = req.headers.email
+  const rush = new RushModel({
+    email,
+    ...req.body,
+  })
+
+  rush.save(err => {
+    res.status(200).json(rush)
+  })
+})
+
+router.delete('/rush', (req, res) => {
+  const email = req.headers.email
+
+  RushModel.deleteOne({ email }, (err, numRemoved) => {
     res.status(200).json(true)
   })
 })
