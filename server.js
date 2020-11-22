@@ -109,13 +109,16 @@ router.get('/rush', (req, res) => {
 
 router.post('/rush', (req, res) => {
   const email = req.headers.email
-  const rush = new RushModel({
-    email,
-    ...req.body,
-  })
 
-  rush.save(err => {
-    res.status(200).json(rush)
+  RushModel.deleteMany({ email }, (err, numRemoved) => {
+    const rush = new RushModel({
+      email,
+      ...req.body,
+    })
+
+    rush.save(err => {
+      res.status(200).json(rush)
+    })
   })
 })
 
