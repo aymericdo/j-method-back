@@ -8,13 +8,13 @@ const cors = require('cors')
 require('dotenv').config()
 const mongoose = require('mongoose');
 const moment = require('moment');
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 const router = express.Router();
 
 app.use(cors());
 app.use(express.json({
-    type: ['application/json', 'text/plain']
+  type: ['application/json', 'text/plain']
 }));
 
 const uri = process.env.MONGODB_URI;
@@ -232,7 +232,7 @@ router.delete('/notifications/:notificationId', (req, res) => {
   const now = new Date(req.headers.now);
 
   NotificationModel.findOne({ 'course.email': email, _id: notificationId }, (err, doc) => {
-    const diff = (doc.isOnPauseSince) ?
+    const timeToDeleteInSecond = (doc.isOnPauseSince) ?
       moment(doc.date).diff(moment(doc.isOnPauseSince), 'seconds')
     :
       moment(doc.date).diff(moment(now), 'seconds')
@@ -241,27 +241,30 @@ router.delete('/notifications/:notificationId', (req, res) => {
       deleteInScheduler(email);
       
       NotificationModel.find(notificationRequest(email)).sort({ date: 1 }).exec((err, notifications) => {
-        const currentDate = moment(notifications[0].date);
         const notifs = [];
 
-        notifications.forEach((n, index) => {
-          notifs.push({
-            ...n._doc,
-            date: index === 0
-              ? currentDate.subtract(diff, 'seconds').format()
-              : currentDate.add(n.durationBefore, 'minutes').format(),
-          });
-        });
+        if (notifications.length) {
+          const currentDate = moment(notifications[0].date);
 
-        notifs.forEach(async notif => {
-          await NotificationModel.updateOne({ 'course.email': email, _id: notif._id }, { date: notif.date });
-        });
-
-        if (!doc.isOnPauseSince) {
-          notifs.forEach((notif) => {
-            const j = scheduleNotif(notif);
-            appendInScheduler(email, j);
+          notifications.forEach((n, index) => {
+            notifs.push({
+              ...n._doc,
+              date: index === 0
+                ? currentDate.subtract(timeToDeleteInSecond, 'seconds').format()
+                : currentDate.add(n.durationBefore, 'minutes').format(),
+            });
           });
+
+          notifs.forEach(async notif => {
+            await NotificationModel.updateOne({ 'course.email': email, _id: notif._id }, { date: notif.date });
+          });
+
+          if (!doc.isOnPauseSince) {
+            notifs.forEach((notif) => {
+              const j = scheduleNotif(notif);
+              appendInScheduler(email, j);
+            });
+          }
         }
 
         res.status(200).json(notifs);
@@ -346,4 +349,4 @@ app.use('/api', router);  // path must route to lambda
 
 app.set('port', PORT);
 
-app.listen(PORT, () => console.log(`Local app listening on port ${process.env.PORT || 3000}!`));
+app.listen(PORT, () => console.log(`Local app listening on port ${PORT}!`));
