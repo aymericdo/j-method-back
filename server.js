@@ -685,58 +685,61 @@ router.post('/settings', (req, res) => {
       return deleteEvent(oauth2Client, id)
     })).then(() => {
       WeekendRevisionModel.deleteMany({ 'course.email': email }, (err, numRemoved) => {
-        CourseModel.find({ email }, (err, courses) => {
-          let courseInCurrentDay = 0;
-          while (stillHaveTime) {
-            courses.forEach(course => {
-              if (!stillHaveTime) { return; }
-              
-              coursesTooRecent.forEach(courseTooRecent => {
+        WorkDoneModel.find({ 'course.email': email, isFromWE: true }).exec((err, worksDone) => {
+          const idsToIgnore = worksDone.map(work => work.course._id)
+          CourseModel.find({ email, _id: { $nin: idsToIgnore } }, (err, courses) => {
+            let courseInCurrentDay = 0;
+            while (stillHaveTime) {
+              courses.forEach(course => {
                 if (!stillHaveTime) { return; }
-                if (moment(courseTooRecent.date).add(15, 'days').isSameOrBefore(start)) {
-                  const recentCourse = coursesTooRecent.shift();
-                  courseInCurrentDay = addEventInArray(recentCourse, start, momentEndDate, courseInCurrentDay, maxCoursesNumber, events, courses)
-                  if (courseInCurrentDay === -1) {
-                    stillHaveTime = false
-                    return null;
+                
+                coursesTooRecent.forEach(courseTooRecent => {
+                  if (!stillHaveTime) { return; }
+                  if (moment(courseTooRecent.date).add(15, 'days').isSameOrBefore(start)) {
+                    const recentCourse = coursesTooRecent.shift();
+                    courseInCurrentDay = addEventInArray(recentCourse, start, momentEndDate, courseInCurrentDay, maxCoursesNumber, events, courses)
+                    if (courseInCurrentDay === -1) {
+                      stillHaveTime = false
+                      return null;
+                    }
                   }
+                });
+                
+                if (moment(course.date).add(15, 'days').isAfter(start)) {
+                  coursesTooRecent.push(course)
+                  return null;
+                }
+        
+                courseInCurrentDay = addEventInArray(course, start, momentEndDate, courseInCurrentDay, maxCoursesNumber, events, courses)
+        
+                if (courseInCurrentDay === -1) {
+                  stillHaveTime = false
+                  return null;
                 }
               });
-              
-              if (moment(course.date).add(15, 'days').isAfter(start)) {
-                coursesTooRecent.push(course)
-                return null;
-              }
-      
-              courseInCurrentDay = addEventInArray(course, start, momentEndDate, courseInCurrentDay, maxCoursesNumber, events, courses)
-      
-              if (courseInCurrentDay === -1) {
-                stillHaveTime = false
-                return null;
-              }
-            });
-          }
-      
-          Promise.all(events.map(([course, event], index) => {
-            return new Promise((resolve, reject) => {
-              resolve(insertEvents(oauth2Client, event)
-                .then((id) => {
-                  const weekendRevision = new WeekendRevisionModel({
-                    course,
-                    date: event.start.date,
-                    googleId: id,
-                  });
-      
-                  weekendRevision.save(() => {});
-              }));
-            })
-          })).then(() => {
-            const query = { email: req.userData.email };
-            const update = { $set: { maxCoursesNumber }};
-            const options = { upsert: true };
-      
-            SettingModel.updateOne(query, update, options, (err, doc) => {
-              myCache.del(`loading-setting-${email}`);
+            }
+        
+            Promise.all(events.map(([course, event], index) => {
+              return new Promise((resolve, reject) => {
+                resolve(insertEvents(oauth2Client, event)
+                  .then((id) => {
+                    const weekendRevision = new WeekendRevisionModel({
+                      course,
+                      date: event.start.date,
+                      googleId: id,
+                    });
+        
+                    weekendRevision.save(() => {});
+                }));
+              })
+            })).then(() => {
+              const query = { email: req.userData.email };
+              const update = { $set: { maxCoursesNumber }};
+              const options = { upsert: true };
+        
+              SettingModel.updateOne(query, update, options, (err, doc) => {
+                myCache.del(`loading-setting-${email}`);
+              });
             });
           });
         });
@@ -753,7 +756,7 @@ router.get('/today-classes', (req, res) => {
 
   WeekendRevisionModel.find({ email, date: now }, (err, weRevisions) => {
     CourseModel.find({ email, reminders: now }, (err, courses) => {
-      const realCourses = weRevisions.map(we => we.course).concat(courses)
+      const realCourses = weRevisions.map(we => ({ ...we.course, isFromWE: true })).concat(courses)
       WorkDoneModel.find({ 'course.email': email, date: now }).exec((err, docs) => {
         const docsAlreadySeenForTodayIds = docs.map(doc => doc.course._id.toString())
         res.status(200).json(realCourses.filter(course => !docsAlreadySeenForTodayIds.includes(course._id.toString())));
