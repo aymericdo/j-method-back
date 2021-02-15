@@ -64,6 +64,7 @@ const SettingSchema = new mongoose.Schema({
 const WorkDoneSchema = new mongoose.Schema({
   course: { type: CourseSchema, required: true },
   date: { type: Date, required: true },
+  isFromWE: { type: Boolean, required: true }
 }, { timestamps: true });
 const WeekendRevisionSchema = new mongoose.Schema({
   course: { type: CourseSchema, required: true },
@@ -766,34 +767,52 @@ router.post('/today-classes', (req, res) => {
   const email = req.userData.email
 
   oauth2Client.setCredentials(req.userData.tokens);
-  new Promise((resolve, reject) => {
-    WeekendRevisionModel.findOne({ 'course._id': req.body.course._id, date: now }, (err, weRevision) => {
-      CourseModel.findOne({ _id: req.body.course._id, email, reminders: now }, (err, course) => {
-        if (weRevision) {
-          const googleId = weRevision.googleId
-          resolve(patchEvents(oauth2Client, googleId))
-        } else if (course) {
+  WeekendRevisionModel.findOne({ 'course._id': req.body.course._id, date: now }, (err, weRevision) => {
+    CourseModel.findOne({ _id: req.body.course._id, email, reminders: now }, (err, course) => {
+      if (weRevision) {
+        const googleId = weRevision.googleId
+        patchEvents(oauth2Client, googleId).then(() => {
+          const workDone = new WorkDoneModel({
+            ...req.body,
+            date: now,
+            isFromWE: true,
+          });
+          
+          workDone.save(err => {
+            res.status(200).json(true)
+          });
+        })
+      } else if (course) {
+        if (course.ids) {
           const index = course.reminders.map(r => moment(r).format('YYYY-MM-DD')).indexOf(moment(req.headers.now).format('YYYY-MM-DD'));
           const googleId = course.ids[index]
-          resolve(patchEvents(oauth2Client, googleId))
+          patchEvents(oauth2Client, googleId).then(() => {
+            const workDone = new WorkDoneModel({
+              ...req.body,
+              date: now,
+              isFromWE: false,
+            });
+            
+            workDone.save(err => {
+              res.status(200).json(true)
+            });
+          })
         } else {
-          resolve(false);
+          const workDone = new WorkDoneModel({
+            ...req.body,
+            date: now,
+            isFromWE: false,
+          });
+          
+          workDone.save(err => {
+            res.status(200).json(true)
+          });
         }
-      });
+      } else {
+        res.status(403).json(false)
+      }
     });
-  }).then((truc) => {
-    if (!truc) {
-      res.status(403).json(false)
-    }
-    const workDone = new WorkDoneModel({
-      ...req.body,
-      date: now,
-    });
-    
-    workDone.save(err => {
-      res.status(200).json(true)
-    });
-  })
+  });
 });
 
 function getFirstSaturday(startDate) {
