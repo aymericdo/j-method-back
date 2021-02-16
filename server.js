@@ -216,7 +216,27 @@ async function insertEvents(auth, event) {
   }
 }
 
-async function patchEvents(auth, eventId) {
+async function patchDescriptionEvents(auth, eventId, newDescription) {
+  const calendar = google.calendar({ version: 'v3', auth });
+  const randDelay = Math.floor(Math.random()*1000)
+  try {
+    const result = await backOff(() => calendar.events.patch({
+      auth: auth,
+      calendarId: 'primary',
+      eventId: eventId,
+      resource: {
+        description: newDescription,
+      },
+    }), { jitter: 'full', numOfAttempts: 20, maxDelay: 32000, delayFirstAttempt: true, startingDelay: randDelay });
+
+    return result.data.id;
+  } catch (err) {
+    console.log('There was an error contacting the Calendar service: ' + err);
+    return;
+  }
+}
+
+async function patchColorEvents(auth, eventId) {
   const calendar = google.calendar({ version: 'v3', auth });
   const randDelay = Math.floor(Math.random()*1000)
   try {
@@ -266,11 +286,13 @@ router.post('/courses', (req, res) => {
     reminders.push(moment().add(30, 'day').format('YYYY-MM-DD'));
   }
 
+  const description = `${course.description} (${course.difficulties === 'tough' ? 'Difficile' : 'Facile'})`;
+
   oauth2Client.setCredentials(req.userData.tokens);
   Promise.all(reminders.map((reminder, index) => {
     const event = {
       summary: `${course.name} (${index + 1})`,
-      description: `${course.description} (${course.difficulties === 'tough' ? 'Difficile' : 'Facile'})`,
+      description,
       start: {
           date: reminder,
           timeZone: 'Europe/Paris',
@@ -291,6 +313,7 @@ router.post('/courses', (req, res) => {
   })).then(ids => {
     const course = new CourseModel({
       ...req.body,
+      description,
       email,
       ids,
       reminders,
@@ -300,6 +323,24 @@ router.post('/courses', (req, res) => {
       res.status(200).json(course)
     });
   });
+});
+
+router.patch('/courses/:courseId', (req, res) => {
+  const email = req.userData.email
+  const courseId = req.params.courseId
+  const course = req.body
+
+  oauth2Client.setCredentials(req.userData.tokens);
+  const googleIds = course.ids
+  Promise.all(googleIds.filter(Boolean).map((id) => {
+    return patchDescriptionEvents(oauth2Client, id, course.description)
+  })).then(() => {
+    CourseModel.updateOne({ email, _id: courseId }, { description: course.description }, (err, docs) => {
+      CourseModel.findOne({ email, _id: courseId }, (err, doc) => {
+        res.status(200).json(doc)
+      });
+    });
+  })
 });
 
 router.get('/courses', (req, res) => {
@@ -774,7 +815,7 @@ router.post('/today-classes', (req, res) => {
     CourseModel.findOne({ _id: req.body.course._id, email, reminders: now }, (err, course) => {
       if (weRevision) {
         const googleId = weRevision.googleId
-        patchEvents(oauth2Client, googleId).then(() => {
+        patchColorEvents(oauth2Client, googleId).then(() => {
           const workDone = new WorkDoneModel({
             ...req.body,
             date: now,
@@ -789,7 +830,7 @@ router.post('/today-classes', (req, res) => {
         if (course.ids) {
           const index = course.reminders.map(r => moment(r).format('YYYY-MM-DD')).indexOf(moment(req.headers.now).format('YYYY-MM-DD'));
           const googleId = course.ids[index]
-          patchEvents(oauth2Client, googleId).then(() => {
+          patchColorEvents(oauth2Client, googleId).then(() => {
             const workDone = new WorkDoneModel({
               ...req.body,
               date: now,
