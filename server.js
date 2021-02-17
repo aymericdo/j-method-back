@@ -793,7 +793,7 @@ router.post('/settings', (req, res) => {
 
 router.get('/today-classes', (req, res) => {
   const email = req.userData.email
-  const now = moment().format('YYYY-MM-DD');
+  const now = new Date(moment(req.headers.now).format('YYYY-MM-DD'));
 
   WeekendRevisionModel.find({ email, date: now }, (err, weRevisions) => {
     CourseModel.find({ email, reminders: now }, (err, courses) => {
