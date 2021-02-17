@@ -12,6 +12,7 @@ import moment from 'moment';
 import NodeCache from 'node-cache';
 const myCache = new NodeCache();
 import { google } from 'googleapis';
+import Fuse from 'fuse.js'
 const PORT = process.env.PORT || 3000;
 import { backOff } from "exponential-backoff";
 
@@ -351,9 +352,34 @@ router.patch('/courses/:courseId', (req, res) => {
 
 router.get('/courses', (req, res) => {
   const email = req.userData.email
+  const courseFilter = req.query.courseFilter
 
   CourseModel.find({ email }, (err, docs) => {
-    res.status(200).json(docs)
+    if (courseFilter && courseFilter.length > 2) {
+      const options = {
+        // isCaseSensitive: false,
+        // includeScore: false,
+        // shouldSort: true,
+        includeMatches: true,
+        // findAllMatches: false,
+        // minMatchCharLength: 1,
+        // location: 0,
+        // threshold: 0.6,
+        // distance: 100,
+        // useExtendedSearch: false,
+        // ignoreLocation: false,
+        // ignoreFieldNorm: false,
+        keys: [
+          "name",
+        ]
+      };
+
+      const fuse = new Fuse(docs, options);
+      const result = fuse.search(courseFilter)
+      res.status(200).json(result.map(r => ({ ...r.item.toObject(), indices: r.matches })))
+    } else {
+      res.status(200).json(docs)
+    }
   });
 });
 
