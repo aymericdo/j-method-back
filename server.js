@@ -34,18 +34,21 @@ const CourseSchema = new mongoose.Schema({
   reminders: { type: [Date], required: false },
   ids: { type: [String], required: false },
 });
+
 const NotificationSchema = new mongoose.Schema({
   course: { type: CourseSchema, required: true },
   date: { type: Date, required: true },
   durationBefore: { type: Number, required: true },
   isOnPauseSince: { type: Date, required: false },
 });
+
 const RushSchema = new mongoose.Schema({
   email: { type: String, required: true },
   startDate: { type: Date, required: true },
   endDate: { type: Date, required: true },
   ids: { type: [String], required: true },
 }, { timestamps: true });
+
 const SubscriptionSchema = new mongoose.Schema({
   email: { type: String, required: true },
   sub: {
@@ -57,15 +60,18 @@ const SubscriptionSchema = new mongoose.Schema({
     },
   }
 });
+
 const SettingSchema = new mongoose.Schema({
   email: { type: String, required: true },
   maxCoursesNumber: { type: Number, required: true, default: 10 },
 });
+
 const WorkDoneSchema = new mongoose.Schema({
   course: { type: CourseSchema, required: true },
   date: { type: Date, required: true },
   isFromWE: { type: Boolean, required: true }
 }, { timestamps: true });
+
 const WeekendRevisionSchema = new mongoose.Schema({
   course: { type: CourseSchema, required: true },
   date: { type: Date, required: true },
