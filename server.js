@@ -305,7 +305,7 @@ router.post('/courses', (req, res) => {
           timeZone: 'Europe/Paris',
       },
       end: {
-          date: reminder,
+          date: moment(reminder).add(1, 'day').format('YYYY-MM-DD'),
           timeZone: 'Europe/Paris',
       },
       reminders: {
@@ -720,8 +720,6 @@ router.post('/settings', (req, res) => {
       courseInCurrentDay = 0
     }
 
-    const end = moment(start).add(1, 'hours');
-
     const res = {
       summary: course.name,
       description: course.description,
@@ -731,7 +729,7 @@ router.post('/settings', (req, res) => {
         timeZone: 'Europe/Paris'
       },
       end: {
-        date: end.format('YYYY-MM-DD'),
+        date: moment(start).add(1, 'days').format('YYYY-MM-DD'),
         timeZone: 'Europe/Paris'
       },
       reminders: {
