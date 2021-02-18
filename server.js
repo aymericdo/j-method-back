@@ -223,7 +223,7 @@ async function insertEvents(auth, event) {
   }
 }
 
-async function patchDescriptionEvents(auth, eventId, newDescription) {
+async function patchEvents(auth, eventId, resource) {
   const calendar = google.calendar({ version: 'v3', auth });
   const randDelay = Math.floor(Math.random()*1000)
   try {
@@ -231,9 +231,7 @@ async function patchDescriptionEvents(auth, eventId, newDescription) {
       auth: auth,
       calendarId: 'primary',
       eventId: eventId,
-      resource: {
-        description: newDescription,
-      },
+      resource,
     }), { jitter: 'full', numOfAttempts: 20, maxDelay: 32000, delayFirstAttempt: true, startingDelay: randDelay });
 
     return result.data.id;
@@ -243,20 +241,43 @@ async function patchDescriptionEvents(auth, eventId, newDescription) {
   }
 }
 
-async function patchColorEvents(auth, eventId) {
+// todo to delete
+async function patchEventsFixMobile(auth, eventId) {
   const calendar = google.calendar({ version: 'v3', auth });
   const randDelay = Math.floor(Math.random()*1000)
   try {
-    const result = await backOff(() => calendar.events.patch({
+    const result = await backOff(() => calendar.events.get({
       auth: auth,
       calendarId: 'primary',
       eventId: eventId,
-      resource: {
-        colorId: colors.GREEN,
-      },
     }), { jitter: 'full', numOfAttempts: 20, maxDelay: 32000, delayFirstAttempt: true, startingDelay: randDelay });
 
-    return result.data.id;
+    if (result.data.start.date === result.data.end.date) {
+      const startDate = result.data.start.date
+      const endDate = moment(startDate).add(1, 'day').format('YYYY-MM-DD')
+
+      console.log(result.data.summary + ' ' + startDate)
+
+      const kaka = await backOff(() => calendar.events.patch({
+        auth: auth,
+        calendarId: 'primary',
+        eventId: eventId,
+        resource: {
+          start: {
+            date: startDate,
+            timeZone: 'Europe/Paris',
+          },
+          end: {
+            date: endDate,
+            timeZone: 'Europe/Paris',
+          },
+        },
+      }), { jitter: 'full', numOfAttempts: 20, maxDelay: 32000, delayFirstAttempt: true, startingDelay: randDelay });
+
+      return kaka.data.id;
+    } else {
+      return result.data.id;
+    }
   } catch (err) {
     console.log('There was an error contacting the Calendar service: ' + err);
     return;
@@ -277,6 +298,21 @@ async function deleteEvent(auth, id) {
     return;
   }
 }
+
+router.get('/fix-courses', (req, res) => {
+  const email = req.userData.email
+  
+  oauth2Client.setCredentials(req.userData.tokens);
+  CourseModel.find({ email }, (err, docs) => {
+    docs.forEach((doc) => {
+      if (doc.ids) {
+        doc.ids.forEach((id) => {
+          patchEventsFixMobile(oauth2Client, id);
+        })
+      }
+    })
+  })
+})
 
 router.post('/courses', (req, res) => {
   const email = req.userData.email
@@ -340,7 +376,7 @@ router.patch('/courses/:courseId', (req, res) => {
   oauth2Client.setCredentials(req.userData.tokens);
   const googleIds = course.ids
   Promise.all(googleIds.filter(Boolean).map((id) => {
-    return patchDescriptionEvents(oauth2Client, id, course.description)
+    return patchEvents(oauth2Client, id, { description: course.description })
   })).then(() => {
     CourseModel.updateOne({ email, _id: courseId }, { description: course.description }, (err, docs) => {
       CourseModel.findOne({ email, _id: courseId }, (err, doc) => {
@@ -845,7 +881,7 @@ router.post('/today-classes', (req, res) => {
     CourseModel.findOne({ _id: req.body.course._id, email, reminders: now }, (err, course) => {
       if (weRevision) {
         const googleId = weRevision.googleId
-        patchColorEvents(oauth2Client, googleId).then(() => {
+        patchEvents(oauth2Client, googleId, { colorId: colors.GREEN }).then(() => {
           const workDone = new WorkDoneModel({
             ...req.body,
             date: now,
@@ -860,7 +896,7 @@ router.post('/today-classes', (req, res) => {
         if (course.ids) {
           const index = course.reminders.map(r => moment(r).format('YYYY-MM-DD')).indexOf(moment(req.headers.now).format('YYYY-MM-DD'));
           const googleId = course.ids[index]
-          patchColorEvents(oauth2Client, googleId).then(() => {
+          patchEvents(oauth2Client, googleId, { colorId: colors.GREEN }).then(() => {
             const workDone = new WorkDoneModel({
               ...req.body,
               date: now,
