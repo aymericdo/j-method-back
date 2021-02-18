@@ -320,13 +320,13 @@ router.post('/courses', (req, res) => {
   const course = req.body
   const reminders = [];
   if (req.body.sendToGoogleCalendar) {
-    reminders.push(moment().add(1, 'day').format('YYYY-MM-DD'));
+    reminders.push(moment.parseZone(req.headers.now).add(1, 'day').format('YYYY-MM-DD'));
     if (req.body.difficulties === 'tough') {
-      reminders.push(moment().add(2, 'day').format('YYYY-MM-DD'));
+      reminders.push(moment.parseZone(req.headers.now).add(2, 'day').format('YYYY-MM-DD'));
     }
-    reminders.push(moment().add(5, 'day').format('YYYY-MM-DD'));
-    reminders.push(moment().add(15, 'day').format('YYYY-MM-DD'));
-    reminders.push(moment().add(30, 'day').format('YYYY-MM-DD'));
+    reminders.push(moment.parseZone(req.headers.now).add(5, 'day').format('YYYY-MM-DD'));
+    reminders.push(moment.parseZone(req.headers.now).add(15, 'day').format('YYYY-MM-DD'));
+    reminders.push(moment.parseZone(req.headers.now).add(30, 'day').format('YYYY-MM-DD'));
   }
 
   const description = `${course.description} (${course.difficulties === 'tough' ? 'Difficile' : 'Facile'})`;
@@ -734,7 +734,7 @@ router.post('/settings', (req, res) => {
 
   myCache.set(`loading-setting-${email}`);
 
-  const startDate = moment(req.headers.now).format('YYYY-MM-DD');
+  const startDate = moment.parseZone(req.headers.now).format('YYYY-MM-DD');
   const endDate = '2021-04-26';
 
   let stillHaveTime = true;
@@ -859,7 +859,7 @@ router.post('/settings', (req, res) => {
 
 router.get('/today-classes', (req, res) => {
   const email = req.userData.email
-  const now = new Date(moment(req.headers.now).format('YYYY-MM-DD'));
+  const now = new Date(moment.parseZone(req.headers.now).format('YYYY-MM-DD'));
 
   WeekendRevisionModel.find({ email, date: now }, (err, weRevisions) => {
     CourseModel.find({ email, reminders: now }, (err, courses) => {
@@ -873,7 +873,7 @@ router.get('/today-classes', (req, res) => {
 });
 
 router.post('/today-classes', (req, res) => {
-  const now = new Date(moment(req.headers.now).format('YYYY-MM-DD'));
+  const now = new Date(moment.parseZone(req.headers.now).format('YYYY-MM-DD'));
   const email = req.userData.email
 
   oauth2Client.setCredentials(req.userData.tokens);
@@ -894,7 +894,7 @@ router.post('/today-classes', (req, res) => {
         })
       } else if (course) {
         if (course.ids) {
-          const index = course.reminders.map(r => moment(r).format('YYYY-MM-DD')).indexOf(moment(req.headers.now).format('YYYY-MM-DD'));
+          const index = course.reminders.map(r => moment(r).format('YYYY-MM-DD')).indexOf(moment.parseZone(req.headers.now).format('YYYY-MM-DD'));
           const googleId = course.ids[index]
           patchEvents(oauth2Client, googleId, { colorId: colors.GREEN }).then(() => {
             const workDone = new WorkDoneModel({
@@ -928,9 +928,9 @@ router.post('/today-classes', (req, res) => {
 function getFirstSaturday(startDate) {
   const dayINeed = 6;
   if (startDate.isoWeekday() <= dayINeed) {
-    return moment().isoWeekday(dayINeed);
+    return startDate.isoWeekday(dayINeed);
   } else {
-    return moment().add(1, 'weeks').isoWeekday(dayINeed);
+    return startDate.add(1, 'weeks').isoWeekday(dayINeed);
   }
 }
 
