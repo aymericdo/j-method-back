@@ -893,12 +893,9 @@ router.post('/today-classes', (req, res) => {
           });
         })
       } else if (course) {
-        console.log(course)
         if (course.ids) {
           const index = course.reminders.map(r => moment(r).format('YYYY-MM-DD')).indexOf(moment.parseZone(req.headers.now).format('YYYY-MM-DD'));
           const googleId = course.ids[index]
-          console.log(index)
-          console.log(googleId)
           patchEvents(oauth2Client, googleId, { colorId: colors.GREEN }).then(() => {
             const workDone = new WorkDoneModel({
               ...req.body,
