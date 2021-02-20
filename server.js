@@ -250,23 +250,22 @@ async function patchEventsFixRapido(auth, name, courseId) {
       auth: auth,
       calendarId: 'primary',
       timeMin: '2021-01-01T00:00:00Z',
-      q: 'M6 Transport membranaire #3 + Adhérence et jonction #1',
+      q: name,
       orderBy: 'startTime',
       singleEvents: true,
     }), { jitter: 'full', numOfAttempts: 20, maxDelay: 32000, delayFirstAttempt: true, startingDelay: randDelay });
 
-    // console.log(name)
-    console.log(result.data.items)
-    // const ids = result.data.items.length && result.data.items.filter(item => item.summary.includes(name)).length ?
-    //   result.data.items.filter(item => item.summary.includes(name)).map(item => item.id)
-    // :
-    //   null
+    const ids = result.data.items.length && result.data.items.filter(item => item.summary.includes(name)).length ?
+      result.data.items.filter(item => item.summary.includes(name)).map(item => item.id)
+    :
+      null
 
-    // CourseModel.updateOne({ _id: courseId }, { ids: ids }, (err, docs) => {
-    //   if (!err) {
-    //     console.log('ok')
-    //   }
-    // })
+    CourseModel.updateOne({ _id: courseId }, { ids: ids }, (err, docs) => {
+      if (!err) {
+        console.log(name)
+        console.log('ok')
+      }
+    })
 
     // if (result.data.start.date === result.data.end.date) {
     //   const startDate = result.data.start.date
@@ -320,9 +319,9 @@ router.get('/fix-courses', (req, res) => {
 
   oauth2Client.setCredentials(req.userData.tokens);
   CourseModel.find({ email }, (err, docs) => {
-    // docs.forEach((doc) => {
-      patchEventsFixRapido(oauth2Client);
-    // })
+    docs.forEach((doc) => {
+      patchEventsFixRapido(oauth2Client, doc.name, doc._id);
+    })
   })
   res.status(200).json(true)
 })
