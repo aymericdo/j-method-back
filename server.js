@@ -257,16 +257,16 @@ async function patchEventsFixRapido(auth, name, courseId) {
 
     console.log(name)
     console.log(result.data.items)
-    const ids = result.data.items.length && result.data.items.filter(item => item.summary.includes(name)).length ?
-      result.data.items.filter(item => item.summary.includes(name)).map(item => item.id)
-    :
-      null
+    // const ids = result.data.items.length && result.data.items.filter(item => item.summary.includes(name)).length ?
+    //   result.data.items.filter(item => item.summary.includes(name)).map(item => item.id)
+    // :
+    //   null
 
-    CourseModel.updateOne({ _id: courseId }, { ids: ids }, (err, docs) => {
-      if (!err) {
-        console.log('ok')
-      }
-    })
+    // CourseModel.updateOne({ _id: courseId }, { ids: ids }, (err, docs) => {
+    //   if (!err) {
+    //     console.log('ok')
+    //   }
+    // })
 
     // if (result.data.start.date === result.data.end.date) {
     //   const startDate = result.data.start.date
