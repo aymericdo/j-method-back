@@ -242,42 +242,62 @@ async function patchEvents(auth, eventId, resource) {
 }
 
 // todo to delete
-async function patchEventsFixMobile(auth, eventId) {
+async function patchEventsFixRapido(auth, name, courseId) {
   const calendar = google.calendar({ version: 'v3', auth });
   const randDelay = Math.floor(Math.random()*1000)
   try {
-    const result = await backOff(() => calendar.events.get({
+    const result = await backOff(() => calendar.events.list({
       auth: auth,
       calendarId: 'primary',
-      eventId: eventId,
+      timeMin: '2021-01-01T00:00:00Z',
+      q: name,
+      orderBy: 'startTime',
+      singleEvents: true,
     }), { jitter: 'full', numOfAttempts: 20, maxDelay: 32000, delayFirstAttempt: true, startingDelay: randDelay });
 
-    if (result.data.start.date === result.data.end.date) {
-      const startDate = result.data.start.date
-      const endDate = moment(startDate).add(1, 'day').format('YYYY-MM-DD')
+    console.log(name)
+    if (result.data.items.length && result.data.items[0].summary.includes(name)) {
+      const ids = result.data.items.map(item => item.id)
 
-      console.log(result.data.summary + ' ' + startDate)
-
-      const kaka = await backOff(() => calendar.events.patch({
-        auth: auth,
-        calendarId: 'primary',
-        eventId: eventId,
-        resource: {
-          start: {
-            date: startDate,
-            timeZone: 'Europe/Paris',
-          },
-          end: {
-            date: endDate,
-            timeZone: 'Europe/Paris',
-          },
-        },
-      }), { jitter: 'full', numOfAttempts: 20, maxDelay: 32000, delayFirstAttempt: true, startingDelay: randDelay });
-
-      return kaka.data.id;
+      CourseModel.updateOne({ _id: courseId }, { ids: ids }, (err, docs) => {
+        if (!err) {
+          console.log('ok')
+        }
+      })
     } else {
-      return result.data.id;
+      CourseModel.updateOne({ _id: courseId }, { ids: null }, (err, docs) => {
+        if (!err) {
+          console.log('null ok')
+        }
+      })
     }
+
+    // if (result.data.start.date === result.data.end.date) {
+    //   const startDate = result.data.start.date
+    //   const endDate = moment(startDate).add(1, 'day').format('YYYY-MM-DD')
+
+    //   console.log(result.data.summary + ' ' + startDate)
+
+    //   const kaka = await backOff(() => calendar.events.patch({
+    //     auth: auth,
+    //     calendarId: 'primary',
+    //     eventId: eventId,
+    //     resource: {
+    //       start: {
+    //         date: startDate,
+    //         timeZone: 'Europe/Paris',
+    //       },
+    //       end: {
+    //         date: endDate,
+    //         timeZone: 'Europe/Paris',
+    //       },
+    //     },
+    //   }), { jitter: 'full', numOfAttempts: 20, maxDelay: 32000, delayFirstAttempt: true, startingDelay: randDelay });
+
+    //   return kaka.data.id;
+    // } else {
+    //   return result.data.id;
+    // }
   } catch (err) {
     console.log('There was an error contacting the Calendar service: ' + err);
     return;
@@ -301,17 +321,14 @@ async function deleteEvent(auth, id) {
 
 router.get('/fix-courses', (req, res) => {
   const email = req.userData.email
-  
+
   oauth2Client.setCredentials(req.userData.tokens);
   CourseModel.find({ email }, (err, docs) => {
     docs.forEach((doc) => {
-      if (doc.ids) {
-        doc.ids.forEach((id) => {
-          patchEventsFixMobile(oauth2Client, id);
-        })
-      }
+      patchEventsFixRapido(oauth2Client, doc.name, doc._id);
     })
   })
+  res.status(200).json(true)
 })
 
 router.post('/courses', (req, res) => {
