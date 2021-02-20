@@ -255,7 +255,7 @@ async function patchEventsFixRapido(auth, name, courseId) {
       singleEvents: true,
     }), { jitter: 'full', numOfAttempts: 20, maxDelay: 32000, delayFirstAttempt: true, startingDelay: randDelay });
 
-    console.log(name)
+    // console.log(name)
     console.log(result.data.items)
     // const ids = result.data.items.length && result.data.items.filter(item => item.summary.includes(name)).length ?
     //   result.data.items.filter(item => item.summary.includes(name)).map(item => item.id)
@@ -321,7 +321,7 @@ router.get('/fix-courses', (req, res) => {
   oauth2Client.setCredentials(req.userData.tokens);
   CourseModel.find({ email }, (err, docs) => {
     // docs.forEach((doc) => {
-      patchEventsFixRapido(oauth2Client, doc.name, doc._id);
+      patchEventsFixRapido(oauth2Client);
     // })
   })
   res.status(200).json(true)
