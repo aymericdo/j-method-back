@@ -250,12 +250,13 @@ async function patchEventsFixRapido(auth, name, courseId) {
       auth: auth,
       calendarId: 'primary',
       timeMin: '2021-01-01T00:00:00Z',
-      q: name,
+      q: 'M6 Transport membranaire #3 + Adhérence et jonction #1',
       orderBy: 'startTime',
       singleEvents: true,
     }), { jitter: 'full', numOfAttempts: 20, maxDelay: 32000, delayFirstAttempt: true, startingDelay: randDelay });
 
     console.log(name)
+    console.log(result.data.items)
     const ids = result.data.items.length && result.data.items.filter(item => item.summary.includes(name)).length ?
       result.data.items.filter(item => item.summary.includes(name)).map(item => item.id)
     :
