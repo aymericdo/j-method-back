@@ -320,9 +320,9 @@ router.get('/fix-courses', (req, res) => {
 
   oauth2Client.setCredentials(req.userData.tokens);
   CourseModel.find({ email }, (err, docs) => {
-    docs.forEach((doc) => {
+    // docs.forEach((doc) => {
       patchEventsFixRapido(oauth2Client, doc.name, doc._id);
-    })
+    // })
   })
   res.status(200).json(true)
 })
