@@ -256,21 +256,16 @@ async function patchEventsFixRapido(auth, name, courseId) {
     }), { jitter: 'full', numOfAttempts: 20, maxDelay: 32000, delayFirstAttempt: true, startingDelay: randDelay });
 
     console.log(name)
-    if (result.data.items.length && result.data.items[0].summary.includes(name)) {
-      const ids = result.data.items.map(item => item.id)
+    const ids = result.data.items.length && result.data.items.filter(item => item.summary.includes(name)).length ?
+      result.data.items.filter(item => item.summary.includes(name)).map(item => item.id)
+    :
+      null
 
-      CourseModel.updateOne({ _id: courseId }, { ids: ids }, (err, docs) => {
-        if (!err) {
-          console.log('ok')
-        }
-      })
-    } else {
-      CourseModel.updateOne({ _id: courseId }, { ids: null }, (err, docs) => {
-        if (!err) {
-          console.log('null ok')
-        }
-      })
-    }
+    CourseModel.updateOne({ _id: courseId }, { ids: ids }, (err, docs) => {
+      if (!err) {
+        console.log('ok')
+      }
+    })
 
     // if (result.data.start.date === result.data.end.date) {
     //   const startDate = result.data.start.date
