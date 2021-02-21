@@ -875,7 +875,7 @@ router.get('/today-classes', (req, res) => {
 
   WeekendRevisionModel.find({ 'course.email': email, date: now }, (err, weRevisions) => {
     CourseModel.find({ email, reminders: now }, (err, courses) => {
-      const realCourses = weRevisions.map(we => ({ ...we.course, isFromWE: true })).concat(courses)
+      const realCourses = weRevisions.map(we => ({ ...we.toObject().course, isFromWE: true })).concat(courses)
       WorkDoneModel.find({ 'course.email': email, date: now }).exec((err, docs) => {
         const docsAlreadySeenForTodayIds = docs.map(doc => doc.course._id.toString())
         res.status(200).json(realCourses.filter(course => !docsAlreadySeenForTodayIds.includes(course._id.toString())));
