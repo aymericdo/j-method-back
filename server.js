@@ -873,7 +873,7 @@ router.get('/today-classes', (req, res) => {
   const email = req.userData.email
   const now = new Date(moment.parseZone(req.headers.now).format('YYYY-MM-DD'));
 
-  WeekendRevisionModel.find({ email, date: now }, (err, weRevisions) => {
+  WeekendRevisionModel.find({ 'course.email': email, date: now }, (err, weRevisions) => {
     CourseModel.find({ email, reminders: now }, (err, courses) => {
       const realCourses = weRevisions.map(we => ({ ...we.course, isFromWE: true })).concat(courses)
       WorkDoneModel.find({ 'course.email': email, date: now }).exec((err, docs) => {
