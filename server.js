@@ -48,6 +48,8 @@ const RushSchema = new mongoose.Schema({
   startDate: { type: Date, required: true },
   endDate: { type: Date, required: true },
   ids: { type: [String], required: true },
+  list: { type: [Object], required: true },
+  isDayRevision: { type: Boolean, required: true },
 }, { timestamps: true });
 
 const SubscriptionSchema = new mongoose.Schema({
@@ -104,6 +106,8 @@ const colors = {
   YELLOW: 5,
   GREEN: 2,
   PINK: 4,
+  ORANGE: 6,
+  TURQUOISE: 7,
   RED: 11,
 };
 
@@ -166,6 +170,130 @@ async function cacheToken(tokens) {
   } catch (err) {
     throw err;
   }
+}
+
+function createRush(email, startDate, endDate, isDayRevision, indexToStart = 0) {
+  myCache.set(`loading-rush-${email}`);
+  RushModel.find({ email }, (err, docs) => {
+    const googleIds = docs.flatMap(doc => doc.ids)
+    Promise.all(googleIds.filter(Boolean).map((id) => {
+      return deleteEvent(oauth2Client, id);
+    })).then(() => {
+      RushModel.deleteMany({ email }, (err, numRemoved) => {
+        let stillHaveTime = true;
+
+        const momentEndDate = moment(endDate).set({ hour: 8, minute: 0, second: 0 });
+        const start = moment(startDate).set({ hour: 8, minute: 0, second: 0 });
+        const events = [];
+        const list = [];
+        let currentIndex = indexToStart;
+
+        CourseModel.find({ email }, (err, courses) => {
+          while (stillHaveTime) {
+            courses.forEach((course, index) => {
+              if (currentIndex > 0) {
+                currentIndex -= 1;
+                return;
+              }
+
+              if (!stillHaveTime) { return; }
+
+              const end =
+                (isDayRevision) ?
+                  (course.difficulties === 'tough') ?
+                    moment(start).add(1, 'days')
+                  :
+                    moment(start)
+              :
+                moment(start).add(1, 'hours');
+
+              let res = {
+                summary: course.name,
+                description: course.description,
+                colorId: colors.YELLOW,
+                reminders: {
+                  useDefault: false,
+                  overrides: [
+                    { method: 'popup', minutes: 240 },
+                  ],
+                },
+              };
+
+              if (isDayRevision) {
+                res = {
+                  ...res,
+                  start: {
+                    date: start.format('YYYY-MM-DD'),
+                    timeZone: 'Europe/Paris'
+                  },
+                  end: {
+                    date: ((isDayRevision && course.difficulties === 'tough') ?
+                      end.clone().add(1, 'days') // hack to represent two days in google agenda
+                    :
+                      end
+                    ).format('YYYY-MM-DD'),
+                    timeZone: 'Europe/Paris'
+                  },
+                  colorId: colors.TURQUOISE,
+                };
+              } else {
+                res = {
+                  ...res,
+                  start: {
+                    dateTime: start.format(),
+                    timeZone: 'Europe/Paris'
+                  },
+                  end: {
+                    dateTime: end.format(),
+                    timeZone: 'Europe/Paris'
+                  },
+                };
+              }
+
+              if (isDayRevision) {
+                start.add((course.difficulties === 'tough') ? 2 : 1, 'days');
+              } else {
+                start.add(1, 'hours');
+                if (start.hours() === 12 && start.minutes() === 0) {
+                  start.add(2, 'hours');
+                }
+
+                if (start.hours() === 18 && start.minutes() === 0) {
+                  start.add(1, 'day').set({ hour: 8, minute: 0, second: 0 });
+                }
+              }
+
+              list.push([isDayRevision ? end.format('YYYY-MM-DD') : end.format(), index]);
+
+              events.push(res);
+
+              if (start.isSameOrAfter(momentEndDate)) {
+                stillHaveTime = false;
+                return null;
+              }
+            });
+          }
+
+          Promise.all(events.map((event, index) => {
+            return insertEvents(oauth2Client, event);
+          })).then(ids => {
+            const rush = new RushModel({
+              startDate,
+              endDate,
+              isDayRevision,
+              email,
+              ids,
+              list,
+            })
+
+            rush.save(() => {
+              myCache.del(`loading-rush-${email}`);
+            })
+          });
+        });
+      });
+    });
+  })
 }
 
 router.get('/login', (req, res) => {
@@ -245,6 +373,7 @@ async function patchEvents(auth, eventId, resource) {
 async function patchEventsFixRapido(auth, name, courseId) {
   const calendar = google.calendar({ version: 'v3', auth });
   const randDelay = Math.floor(Math.random()*1000)
+  // Fix ids
   try {
     const result = await backOff(() => calendar.events.list({
       auth: auth,
@@ -255,17 +384,17 @@ async function patchEventsFixRapido(auth, name, courseId) {
       singleEvents: true,
     }), { jitter: 'full', numOfAttempts: 20, maxDelay: 32000, delayFirstAttempt: true, startingDelay: randDelay });
 
-    const ids = result.data.items.length && result.data.items.filter(item => item.summary.includes(name)).length ?
-      result.data.items.filter(item => item.summary.includes(name)).map(item => item.id)
-    :
-      null
+    // const ids = result.data.items.length && result.data.items.filter(item => item.summary.includes(name)).length ?
+    //   result.data.items.filter(item => item.summary.includes(name)).map(item => item.id)
+    // :
+    //   null
 
-    CourseModel.updateOne({ _id: courseId }, { ids: ids }, (err, docs) => {
-      if (!err) {
-        console.log(name)
-        console.log('ok')
-      }
-    })
+    // CourseModel.updateOne({ _id: courseId }, { ids: ids }, (err, docs) => {
+    //   if (!err) {
+    //     console.log(name)
+    //     console.log('ok')
+    //   }
+    // })
 
     // if (result.data.start.date === result.data.end.date) {
     //   const startDate = result.data.start.date
@@ -341,9 +470,10 @@ router.post('/courses', (req, res) => {
     reminders.push(moment.parseZone(req.headers.now).add(30, 'day').format('YYYY-MM-DD'));
   }
 
+  oauth2Client.setCredentials(req.userData.tokens);
+
   const description = `${course.description} (${course.difficulties === 'tough' ? 'Difficile' : 'Facile'})`;
 
-  oauth2Client.setCredentials(req.userData.tokens);
   Promise.all(reminders.map((reminder, index) => {
     const event = {
       summary: `${course.name} (${index + 1})`,
@@ -375,6 +505,17 @@ router.post('/courses', (req, res) => {
     });
   
     course.save(err => {
+      if (req.body.sendToRush) {
+        RushModel.findOne({ email }, (err, doc) => {
+          const { startDate, endDate, isDayRevision } = doc;
+          const currentItemPlusOne = doc.list.find(item => moment(item[0]).isSameOrAfter(moment()));
+    
+          const indexToStart = currentItemPlusOne ? currentItemPlusOne[1] : 0;
+    
+          createRush(email, startDate, endDate, isDayRevision, indexToStart);
+        });
+      }
+
       res.status(200).json(course)
     });
   });
@@ -465,86 +606,10 @@ router.get('/rush', (req, res) => {
 
 router.post('/rush', (req, res) => {
   const email = req.userData.email;
-  myCache.set(`loading-rush-${email}`);
 
   oauth2Client.setCredentials(req.userData.tokens);
-  RushModel.find({ email }, (err, docs) => {
-    const googleIds = docs.flatMap(doc => doc.ids)
-    Promise.all(googleIds.filter(Boolean).map((id) => {
-      return deleteEvent(oauth2Client, id);
-    })).then(() => {
-      RushModel.deleteMany({ email }, (err, numRemoved) => {
-        const startDate = req.body.startDate
-        const endDate = req.body.endDate
-
-        let stillHaveTime = true;
-
-        const momentEndDate = moment(endDate).set({ hour: 8, minute: 0, second: 0 });
-        const start = moment(startDate).set({ hour: 8, minute: 0, second: 0 });
-        const events = [];
-
-        CourseModel.find({ email }, (err, courses) => {
-          while (stillHaveTime) {
-            courses.forEach(course => {
-              if (!stillHaveTime) { return; }
-
-              const end = moment(start).add(1, 'hours');
-
-              const res = {
-                summary: course.name,
-                description: course.description,
-                colorId: colors.YELLOW,
-                start: {
-                  dateTime: start.format(),
-                  timeZone: 'Europe/Paris'
-                },
-                end: {
-                  dateTime: end.format(),
-                  timeZone: 'Europe/Paris'
-                },
-                reminders: {
-                  useDefault: false,
-                  overrides: [
-                    { method: 'popup', minutes: 240 },
-                  ],
-                },
-              };
-
-              start.add(1, 'hours');
-              if (start.hours() === 12 && start.minutes() === 0) {
-                start.add(2, 'hours');
-              }
-
-              if (start.hours() === 18 && start.minutes() === 0) {
-                start.add(1, 'day').set({ hour: 8, minute: 0, second: 0 });
-              }
-
-              events.push(res);
-
-              if (start.isSameOrAfter(momentEndDate)) {
-                stillHaveTime = false;
-                return null;
-              }
-            });
-          }
-
-          Promise.all(events.map((event, index) => {
-            return insertEvents(oauth2Client, event);
-          })).then(ids => {
-            const rush = new RushModel({
-              ...req.body,
-              email,
-              ids,
-            })
-
-            rush.save(() => {
-              myCache.del(`loading-rush-${email}`);
-            })
-          });
-        });
-      });
-    });
-  })
+  const { startDate, endDate, isDayRevision } = req.body;
+  createRush(email, startDate, endDate, isDayRevision);
 
   res.status(200).json(true);
 })
