@@ -808,11 +808,11 @@ router.get('/settings', (req, res) => {
 router.post('/settings', (req, res) => {
   const email = req.userData.email
   const maxCoursesNumber = req.body.maxCoursesNumber
+  const endDate = req.body.endDate
 
   myCache.set(`loading-setting-${email}`);
 
   const startDate = moment.parseZone(req.headers.now).format('YYYY-MM-DD');
-  const endDate = '2021-04-26';
 
   let stillHaveTime = true;
 
