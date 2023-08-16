@@ -286,7 +286,7 @@ function createRush(email, startDate, endDate, isDayRevision, indexToStart = 0) 
               list,
             })
 
-            rush.save(() => {
+            rush.save().then(() => {
               myCache.del(`loading-rush-${email}`);
             })
           });
@@ -504,7 +504,7 @@ router.post('/courses', (req, res) => {
       reminders,
     });
   
-    course.save(err => {
+    course.save().then(() => {
       if (req.body.sendToRush) {
         RushModel.findOne({ email }).then((doc) => {
           const { startDate, endDate, isDayRevision } = doc;
@@ -583,12 +583,12 @@ router.delete('/courses/:courseId', (req, res) => {
       Promise.all(googleIds.filter(Boolean).map((id) => {
         return deleteEvent(oauth2Client, id)
       })).then(() => {
-        CourseModel.deleteOne({ email, _id: courseId }, (err, numRemoved) => {
+        CourseModel.deleteOne({ email, _id: courseId }).then((numRemoved) => {
           res.status(200).json(true);
         });
       });
     } else {
-      CourseModel.deleteOne({ email, _id: courseId }, (err, numRemoved) => {
+      CourseModel.deleteOne({ email, _id: courseId }).then((numRemoved) => {
         res.status(200).json(true);
       });
     }
@@ -624,7 +624,7 @@ router.delete('/rush', (req, res) => {
     Promise.all(googleIds.filter(Boolean).map((id) => {
       return deleteEvent(oauth2Client, id)
     })).then(() => {
-      RushModel.deleteMany({ email }, (err, numRemoved) => {
+      RushModel.deleteMany({ email }).then((numRemoved) => {
         myCache.del(`loading-rush-${email}`);
       });
     });
@@ -642,14 +642,14 @@ router.post('/notifications/sub', (req, res) => {
   const email = req.userData.email
   const sub = req.body
   
-  SubscriptionModel.countDocuments({ email, 'sub.endpoint': sub.endpoint }, function (err, count) {
+  SubscriptionModel.countDocuments({ email, 'sub.endpoint': sub.endpoint }).then((count) => {
     if (count === 0) {
       const subscription = new SubscriptionModel({
         email,
         sub,
       })
 
-      subscription.save(() => {
+      subscription.save().then(() => {
         res.status(200).json(true)
       });
     } else {
@@ -662,10 +662,10 @@ router.post('/notifications', (req, res) => {
   const email = req.userData.email
   const notifications = req.body;
 
-  NotificationModel.deleteMany(notificationRequest(email), (err) => {
+  NotificationModel.deleteMany(notificationRequest(email)).then(() => {
     deleteInScheduler(email);
     notifications.forEach((notif) => {
-      new NotificationModel(notif).save((err, newDoc) => {
+      new NotificationModel(notif).save().then((newDoc) => {
         const j = scheduleNotif(newDoc)
         appendInScheduler(email, j);
       });
@@ -739,7 +739,7 @@ router.delete('/notifications/:notificationId', (req, res) => {
     :
       moment(doc.date).diff(moment(now), 'seconds')
 
-    NotificationModel.deleteOne({ 'course.email': email, _id: notificationId }, (err) => {
+    NotificationModel.deleteOne({ 'course.email': email, _id: notificationId }).then(() => {
       deleteInScheduler(email);
       
       NotificationModel.find(notificationRequest(email)).sort({ date: 1 }).then((notifications) => {
@@ -786,7 +786,7 @@ router.delete('/settings/we-revisions', (req, res) => {
       return new Promise((resolve, reject) => {
         resolve(deleteEvent(oauth2Client, id)
           .then(() => {
-            WeekendRevisionModel.deleteOne({ 'course.email': email, googleId: id }, () => {});
+            WeekendRevisionModel.deleteOne({ 'course.email': email, googleId: id }).then(() => {});
           }));
       });
     })).then(() => {
@@ -913,7 +913,7 @@ router.post('/settings', (req, res) => {
                       googleId: id,
                     });
         
-                    weekendRevision.save(() => {});
+                    weekendRevision.save().then(() => {});
                 }));
               })
             })).then(() => {
@@ -921,7 +921,7 @@ router.post('/settings', (req, res) => {
               const update = { $set: { maxCoursesNumber }};
               const options = { upsert: true };
         
-              SettingModel.updateOne(query, update, options, (err, doc) => {
+              SettingModel.updateOne(query, update, options).then(() => {
                 myCache.del(`loading-setting-${email}`);
               });
             });
@@ -965,7 +965,7 @@ router.post('/today-classes', (req, res) => {
             isFromWE: true,
           });
           
-          workDone.save(err => {
+          workDone.save().then(() => {
             res.status(200).json(true)
           });
         })
@@ -980,7 +980,7 @@ router.post('/today-classes', (req, res) => {
               isFromWE: false,
             });
             
-            workDone.save(err => {
+            workDone.save().then(() => {
               res.status(200).json(true)
             });
           })
@@ -991,7 +991,7 @@ router.post('/today-classes', (req, res) => {
             isFromWE: false,
           });
           
-          workDone.save(err => {
+          workDone.save().then(() => {
             res.status(200).json(true)
           });
         }
