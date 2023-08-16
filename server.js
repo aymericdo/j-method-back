@@ -24,7 +24,7 @@ app.use(express.json({
 }));
 
 const uri = process.env.MONGODB_URI;
-const client = mongoose.createConnection(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = mongoose.createConnection(uri);
 
 const CourseSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -174,12 +174,12 @@ async function cacheToken(tokens) {
 
 function createRush(email, startDate, endDate, isDayRevision, indexToStart = 0) {
   myCache.set(`loading-rush-${email}`);
-  RushModel.find({ email }, (err, docs) => {
+  RushModel.find({ email }).then((docs) => {
     const googleIds = docs.flatMap(doc => doc.ids)
     Promise.all(googleIds.filter(Boolean).map((id) => {
       return deleteEvent(oauth2Client, id);
     })).then(() => {
-      RushModel.deleteMany({ email }, (err, numRemoved) => {
+      RushModel.deleteMany({ email }).then((numRemoved) => {
         let stillHaveTime = true;
 
         const momentEndDate = moment(endDate).set({ hour: 8, minute: 0, second: 0 });
@@ -188,7 +188,7 @@ function createRush(email, startDate, endDate, isDayRevision, indexToStart = 0) 
         const list = [];
         let currentIndex = indexToStart;
 
-        CourseModel.find({ email }, (err, courses) => {
+        CourseModel.find({ email }).then((courses) => {
           while (stillHaveTime) {
             courses.forEach((course, index) => {
               if (currentIndex > 0) {
@@ -447,7 +447,7 @@ router.get('/fix-courses', (req, res) => {
   const email = req.userData.email
 
   oauth2Client.setCredentials(req.userData.tokens);
-  CourseModel.find({ email }, (err, docs) => {
+  CourseModel.find({ email }).then((docs) => {
     docs.forEach((doc) => {
       patchEventsFixRapido(oauth2Client, doc.name, doc._id);
     })
@@ -457,7 +457,7 @@ router.get('/fix-courses', (req, res) => {
 
 router.post('/courses', (req, res) => {
   const email = req.userData.email
-  
+
   const course = req.body
   const reminders = [];
   if (req.body.sendToGoogleCalendar) {
@@ -506,7 +506,7 @@ router.post('/courses', (req, res) => {
   
     course.save(err => {
       if (req.body.sendToRush) {
-        RushModel.findOne({ email }, (err, doc) => {
+        RushModel.findOne({ email }).then((doc) => {
           const { startDate, endDate, isDayRevision } = doc;
           const currentItemPlusOne = doc.list.find(item => moment(item[0]).isSameOrAfter(moment()));
     
@@ -531,45 +531,45 @@ router.patch('/courses/:courseId', (req, res) => {
   Promise.all(googleIds.filter(Boolean).map((id) => {
     return patchEvents(oauth2Client, id, { description: course.description })
   })).then(() => {
-    CourseModel.updateOne({ email, _id: courseId }, { description: course.description }, (err, docs) => {
-      CourseModel.findOne({ email, _id: courseId }, (err, doc) => {
+    CourseModel.updateOne({ email, _id: courseId }, { description: course.description }).then((docs) => {
+      CourseModel.findOne({ email, _id: courseId }).then((doc) => {
         res.status(200).json(doc)
       });
     });
   })
 });
 
-router.get('/courses', (req, res) => {
+router.get('/courses', async (req, res) => {
   const email = req.userData.email
   const courseFilter = req.query.courseFilter
 
-  CourseModel.find({ email }, (err, docs) => {
-    if (courseFilter && courseFilter.length > 2) {
-      const options = {
-        // isCaseSensitive: false,
-        // includeScore: false,
-        // shouldSort: true,
-        includeMatches: true,
-        // findAllMatches: false,
-        // minMatchCharLength: 1,
-        // location: 0,
-        // threshold: 0.6,
-        // distance: 100,
-        // useExtendedSearch: false,
-        // ignoreLocation: false,
-        // ignoreFieldNorm: false,
-        keys: [
-          "name",
-        ]
-      };
+  const docs = await CourseModel.find({ email });
 
-      const fuse = new Fuse(docs, options);
-      const result = fuse.search(courseFilter)
-      res.status(200).json(result.map(r => ({ ...r.item.toObject(), indices: r.matches })))
-    } else {
-      res.status(200).json(docs)
-    }
-  });
+  if (courseFilter && courseFilter.length > 2) {
+    const options = {
+      // isCaseSensitive: false,
+      // includeScore: false,
+      // shouldSort: true,
+      includeMatches: true,
+      // findAllMatches: false,
+      // minMatchCharLength: 1,
+      // location: 0,
+      // threshold: 0.6,
+      // distance: 100,
+      // useExtendedSearch: false,
+      // ignoreLocation: false,
+      // ignoreFieldNorm: false,
+      keys: [
+        "name",
+      ]
+    };
+
+    const fuse = new Fuse(docs, options);
+    const result = fuse.search(courseFilter)
+    res.status(200).json(result.map(r => ({ ...r.item.toObject(), indices: r.matches })))
+  } else {
+    res.status(200).json(docs)
+  }
 });
 
 router.delete('/courses/:courseId', (req, res) => {
@@ -577,7 +577,7 @@ router.delete('/courses/:courseId', (req, res) => {
   const courseId = req.params.courseId
 
   oauth2Client.setCredentials(req.userData.tokens);
-  CourseModel.findOne({ _id: courseId }, (err, doc) => {
+  CourseModel.findOne({ _id: courseId }).then((doc) => {
     const googleIds = doc.ids
     if (googleIds) {
       Promise.all(googleIds.filter(Boolean).map((id) => {
@@ -599,7 +599,7 @@ router.get('/rush', (req, res) => {
   const email = req.userData.email;
   const isLoadingRush = myCache.has(`loading-rush-${email}`);
 
-  RushModel.findOne({ email }, (err, doc) => {
+  RushModel.findOne({ email }).then((doc) => {
     res.status(200).json({ rush: doc, isLoadingRush })
   });
 });
@@ -619,7 +619,7 @@ router.delete('/rush', (req, res) => {
   myCache.set(`loading-rush-${email}`);
   
   oauth2Client.setCredentials(req.userData.tokens);
-  RushModel.find({ email }, (err, docs) => {
+  RushModel.find({ email }).then((docs) => {
     const googleIds = docs.flatMap(doc => doc.ids)
     Promise.all(googleIds.filter(Boolean).map((id) => {
       return deleteEvent(oauth2Client, id)
@@ -677,7 +677,7 @@ router.post('/notifications', (req, res) => {
 
 router.get('/notifications', (req, res) => {
   const email = req.userData.email
-  NotificationModel.find(notificationRequest(email)).sort({ date: 1 }).exec((err, docs) => {
+  NotificationModel.find(notificationRequest(email)).sort({ date: 1 }).then((docs) => {
     res.status(200).json(docs);
   });
 });
@@ -685,8 +685,8 @@ router.get('/notifications', (req, res) => {
 router.post('/notifications/pause', (req, res) => {
   const email = req.userData.email;
   const now = new Date(req.headers.now);
-  NotificationModel.findOne(notificationRequest(email)).sort({ date: -1 }).exec((err, doc) => {
-    NotificationModel.find(notificationRequest(email)).sort({ date: 1 }).exec((err, notifications) => {
+  NotificationModel.findOne(notificationRequest(email)).sort({ date: -1 }).then((doc) => {
+    NotificationModel.find(notificationRequest(email)).sort({ date: 1 }).then((notifications) => {
       const notifs = [];
       if (doc.isOnPauseSince && notifications.length) {
         const currentDate = moment(notifications[0].date);
@@ -733,7 +733,7 @@ router.delete('/notifications/:notificationId', (req, res) => {
   const notificationId = req.params.notificationId
   const now = new Date(req.headers.now);
 
-  NotificationModel.findOne({ 'course.email': email, _id: notificationId }, (err, doc) => {
+  NotificationModel.findOne({ 'course.email': email, _id: notificationId }).then((doc) => {
     const timeToDeleteInSecond = (doc.isOnPauseSince) ?
       moment(doc.date).diff(moment(doc.isOnPauseSince), 'seconds')
     :
@@ -742,7 +742,7 @@ router.delete('/notifications/:notificationId', (req, res) => {
     NotificationModel.deleteOne({ 'course.email': email, _id: notificationId }, (err) => {
       deleteInScheduler(email);
       
-      NotificationModel.find(notificationRequest(email)).sort({ date: 1 }).exec((err, notifications) => {
+      NotificationModel.find(notificationRequest(email)).sort({ date: 1 }).then((notifications) => {
         const notifs = [];
 
         if (notifications.length) {
@@ -781,7 +781,7 @@ router.delete('/settings/we-revisions', (req, res) => {
   myCache.set(`loading-setting-${email}`);
 
   oauth2Client.setCredentials(req.userData.tokens);
-  WeekendRevisionModel.find({ 'course.email': email }, (err, weRevisions) => {
+  WeekendRevisionModel.find({ 'course.email': email }).then((weRevisions) => {
     Promise.all(weRevisions.map(r => r.googleId).filter(Boolean).map((id) => {
       return new Promise((resolve, reject) => {
         resolve(deleteEvent(oauth2Client, id)
@@ -800,7 +800,7 @@ router.delete('/settings/we-revisions', (req, res) => {
 router.get('/settings', (req, res) => {
   const email = req.userData.email
   const isLoadingSetting = myCache.has(`loading-setting-${email}`);
-  SettingModel.findOne({ email }).exec((err, doc) => {
+  SettingModel.findOne({ email }).then((doc) => {
     res.status(200).json({ settings: doc, isLoadingSetting });
   });
 });
@@ -864,14 +864,14 @@ router.post('/settings', (req, res) => {
   }
 
   oauth2Client.setCredentials(req.userData.tokens);
-  WeekendRevisionModel.find({ 'course.email': email }, (err, weRevisions) => {
+  WeekendRevisionModel.find({ 'course.email': email }).then((weRevisions) => {
     Promise.all(weRevisions.map(r => r.googleId).filter(Boolean).map((id) => {
       return deleteEvent(oauth2Client, id)
     })).then(() => {
-      WeekendRevisionModel.deleteMany({ 'course.email': email }, (err, numRemoved) => {
-        WorkDoneModel.find({ 'course.email': email, isFromWE: true }).exec((err, worksDone) => {
+      WeekendRevisionModel.deleteMany({ 'course.email': email }).then((numRemoved) => {
+        WorkDoneModel.find({ 'course.email': email, isFromWE: true }).then((worksDone) => {
           const idsToIgnore = worksDone.map(work => work.course._id)
-          CourseModel.find({ email, _id: { $nin: idsToIgnore } }, (err, courses) => {
+          CourseModel.find({ email, _id: { $nin: idsToIgnore } }).then((courses) => {
             let courseInCurrentDay = 0;
             while (stillHaveTime) {
               courses.forEach(course => {
@@ -938,12 +938,12 @@ router.get('/today-classes', (req, res) => {
   const email = req.userData.email
   const now = new Date(moment.parseZone(req.headers.now).format('YYYY-MM-DD'));
 
-  WeekendRevisionModel.find({ 'course.email': email, date: now }, (err, weRevisions) => {
-    CourseModel.find({ email, reminders: now }, (err, courses) => {
-      const realCourses = weRevisions.map(we => ({ ...we.toObject().course, isFromWE: true })).concat(courses)
-      WorkDoneModel.find({ 'course.email': email, date: now }).exec((err, docs) => {
-        const docsAlreadySeenForTodayIds = docs.map(doc => doc.course._id.toString())
-        res.status(200).json(realCourses.filter(course => !docsAlreadySeenForTodayIds.includes(course._id.toString())));
+  WeekendRevisionModel.find({ 'course.email': email, date: now }).then((weRevisions) => {
+    CourseModel.find({ email, reminders: now }).then((courses) => {
+      const realCourses = weRevisions?.map(we => ({ ...we.toObject().course, isFromWE: true })).concat(courses || [])
+      WorkDoneModel.find({ 'course.email': email, date: now }).then((docs) => {
+        const docsAlreadySeenForTodayIds = docs?.map(doc => doc.course._id.toString()) || []
+        res.status(200).json(realCourses?.filter(course => !docsAlreadySeenForTodayIds.includes(course._id.toString())) || []);
       });
     });
   });
@@ -954,8 +954,8 @@ router.post('/today-classes', (req, res) => {
   const email = req.userData.email
 
   oauth2Client.setCredentials(req.userData.tokens);
-  WeekendRevisionModel.findOne({ 'course._id': req.body.course._id, date: now }, (err, weRevision) => {
-    CourseModel.findOne({ _id: req.body.course._id, email, reminders: now }, (err, course) => {
+  WeekendRevisionModel.findOne({ 'course._id': req.body.course._id, date: now }).then((weRevision) => {
+    CourseModel.findOne({ _id: req.body.course._id, email, reminders: now }).then((course) => {
       if (weRevision) {
         const googleId = weRevision.googleId
         patchEvents(oauth2Client, googleId, { colorId: colors.GREEN }).then(() => {
@@ -1012,8 +1012,8 @@ function getFirstSaturday(startDate) {
 }
 
 const now = new Date();
-NotificationModel.find({ date: { $gte: now }, isOnPauseSince: null }, (err, notifs) => {
-  if (!notifs.length) return;
+NotificationModel.find({ date: { $gte: now }, isOnPauseSince: null }).then((notifs) => {
+  if (!notifs?.length) return;
 
   notifs.forEach((notif) => {
     const j = scheduleNotif(notif);
@@ -1043,7 +1043,7 @@ function scheduleNotif(notif) {
     }
 
     new Promise((resolve, reject) => {
-      SubscriptionModel.find({ email: notif.course.email }, (err, docs) => {
+      SubscriptionModel.find({ email: notif.course.email }).then((docs) => {
         docs.forEach((doc) => {
           resolve(webpush.sendNotification(doc.sub, JSON.stringify(notificationPayload)));
         });
