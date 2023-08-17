@@ -190,7 +190,8 @@ function createRush(email, startDate, endDate, isDayRevision, indexToStart = 0) 
 
         CourseModel.find({ email }).then((courses) => {
           while (stillHaveTime) {
-            courses.forEach((course, index) => {
+            for (let index = 0; index < courses.length; ++index) {
+              const course = courses[index];
               if (currentIndex > 0) {
                 currentIndex -= 1;
                 return;
@@ -271,7 +272,7 @@ function createRush(email, startDate, endDate, isDayRevision, indexToStart = 0) 
                 stillHaveTime = false;
                 return null;
               }
-            });
+            }
           }
 
           Promise.all(events.map((event, index) => {
@@ -369,65 +370,6 @@ async function patchEvents(auth, eventId, resource) {
   }
 }
 
-// todo to delete
-async function patchEventsFixRapido(auth, name, courseId) {
-  const calendar = google.calendar({ version: 'v3', auth });
-  const randDelay = Math.floor(Math.random()*1000)
-  // Fix ids
-  try {
-    const result = await backOff(() => calendar.events.list({
-      auth: auth,
-      calendarId: 'primary',
-      timeMin: '2021-01-01T00:00:00Z',
-      q: name,
-      orderBy: 'startTime',
-      singleEvents: true,
-    }), { jitter: 'full', numOfAttempts: 20, maxDelay: 32000, delayFirstAttempt: true, startingDelay: randDelay });
-
-    // const ids = result.data.items.length && result.data.items.filter(item => item.summary.includes(name)).length ?
-    //   result.data.items.filter(item => item.summary.includes(name)).map(item => item.id)
-    // :
-    //   null
-
-    // CourseModel.updateOne({ _id: courseId }, { ids: ids }, (err, docs) => {
-    //   if (!err) {
-    //     console.log(name)
-    //     console.log('ok')
-    //   }
-    // })
-
-    // if (result.data.start.date === result.data.end.date) {
-    //   const startDate = result.data.start.date
-    //   const endDate = moment(startDate).add(1, 'day').format('YYYY-MM-DD')
-
-    //   console.log(result.data.summary + ' ' + startDate)
-
-    //   const kaka = await backOff(() => calendar.events.patch({
-    //     auth: auth,
-    //     calendarId: 'primary',
-    //     eventId: eventId,
-    //     resource: {
-    //       start: {
-    //         date: startDate,
-    //         timeZone: 'Europe/Paris',
-    //       },
-    //       end: {
-    //         date: endDate,
-    //         timeZone: 'Europe/Paris',
-    //       },
-    //     },
-    //   }), { jitter: 'full', numOfAttempts: 20, maxDelay: 32000, delayFirstAttempt: true, startingDelay: randDelay });
-
-    //   return kaka.data.id;
-    // } else {
-    //   return result.data.id;
-    // }
-  } catch (err) {
-    console.log('There was an error contacting the Calendar service: ' + err);
-    return;
-  }
-}
-
 async function deleteEvent(auth, id) {
   const calendar = google.calendar({ version: 'v3', auth });
   const randDelay = Math.floor(Math.random()*1000)
@@ -442,18 +384,6 @@ async function deleteEvent(auth, id) {
     return;
   }
 }
-
-router.get('/fix-courses', (req, res) => {
-  const email = req.userData.email
-
-  oauth2Client.setCredentials(req.userData.tokens);
-  CourseModel.find({ email }).then((docs) => {
-    docs.forEach((doc) => {
-      patchEventsFixRapido(oauth2Client, doc.name, doc._id);
-    })
-  })
-  res.status(200).json(true)
-})
 
 router.post('/courses', (req, res) => {
   const email = req.userData.email
@@ -664,12 +594,13 @@ router.post('/notifications', (req, res) => {
 
   NotificationModel.deleteMany(notificationRequest(email)).then(() => {
     deleteInScheduler(email);
-    notifications.forEach((notif) => {
+    for (let i = 0; i < notifications.length; ++i) {
+      const notif = notifications[i];
       new NotificationModel(notif).save().then((newDoc) => {
         const j = scheduleNotif(newDoc)
         appendInScheduler(email, j);
       });
-    });
+    }
 
     res.status(200).json(true)
   });
@@ -686,11 +617,12 @@ router.post('/notifications/pause', (req, res) => {
   const email = req.userData.email;
   const now = new Date(req.headers.now);
   NotificationModel.findOne(notificationRequest(email)).sort({ date: -1 }).then((doc) => {
-    NotificationModel.find(notificationRequest(email)).sort({ date: 1 }).then((notifications) => {
+    NotificationModel.find(notificationRequest(email)).sort({ date: 1 }).then(async (notifications) => {
       const notifs = [];
       if (doc.isOnPauseSince && notifications.length) {
         const currentDate = moment(notifications[0].date);
-        notifications.forEach((n, index) => {
+        for (let index = 0; index < notifications.length; ++index) {
+          const n = notifications[index];
           notifs.push({
             ...n._doc,
             date: index === 0
@@ -698,27 +630,31 @@ router.post('/notifications/pause', (req, res) => {
               : currentDate.add(n.durationBefore, 'minutes').format(),
             isOnPauseSince: null,
           });
-        });
+        }
 
-        notifs.forEach(async notif => {
+        for (let i = 0; i < notifs.length; ++i) {
+          const notif = notifs[i];
           await NotificationModel.updateOne({ 'course.email': email, _id: notif._id }, { date: notif.date, isOnPauseSince: null });
-        });
+        }
         
-        notifs.forEach((notif) => {
+        for (let i = 0; i < notifs.length; ++i) {
+          const notif = notifs[i];
           const j = scheduleNotif(notif);
           appendInScheduler(email, j);
-        });
+        }
       } else {
-        notifications.forEach(n => {
+        for (let index = 0; index < notifications.length; ++index) {
+          const n = notifications[index];
           notifs.push({
             ...n._doc,
             isOnPauseSince: now,
           });
-        });
+        }
 
-        notifs.forEach(async notif => {
+        for (let i = 0; i < notifs.length; ++i) {
+          const notif = notifs[i];
           await NotificationModel.updateOne({ 'course.email': email, _id: notif._id }, { isOnPauseSince: now });
-        });
+        }
 
         deleteInScheduler(email);
       }
@@ -742,30 +678,33 @@ router.delete('/notifications/:notificationId', (req, res) => {
     NotificationModel.deleteOne({ 'course.email': email, _id: notificationId }).then(() => {
       deleteInScheduler(email);
       
-      NotificationModel.find(notificationRequest(email)).sort({ date: 1 }).then((notifications) => {
+      NotificationModel.find(notificationRequest(email)).sort({ date: 1 }).then(async (notifications) => {
         const notifs = [];
 
         if (notifications.length) {
           const currentDate = moment(notifications[0].date);
 
-          notifications.forEach((n, index) => {
+          for (let index = 0; index < notifications.length; ++index) {
+            const n = notifications[index];
             notifs.push({
               ...n._doc,
               date: index === 0
                 ? currentDate.subtract(timeToDeleteInSecond, 'seconds').format()
                 : currentDate.add(n.durationBefore, 'minutes').format(),
             });
-          });
+          }
 
-          notifs.forEach(async notif => {
+          for (let index = 0; index < notifs.length; ++index) {
+            const notif = notifs[index];
             await NotificationModel.updateOne({ 'course.email': email, _id: notif._id }, { date: notif.date });
-          });
+          }
 
           if (!doc.isOnPauseSince) {
-            notifs.forEach((notif) => {
+            for (let index = 0; index < notifs.length; ++index) {
+              const notif = notifs[index];
               const j = scheduleNotif(notif);
               appendInScheduler(email, j);
-            });
+            }
           }
         }
 
@@ -874,10 +813,12 @@ router.post('/settings', (req, res) => {
           CourseModel.find({ email, _id: { $nin: idsToIgnore } }).then((courses) => {
             let courseInCurrentDay = 0;
             while (stillHaveTime) {
-              courses.forEach(course => {
+              for (let index = 0; index < courses.length; ++index) {
+                const course = courses[index];
                 if (!stillHaveTime) { return; }
                 
-                coursesTooRecent.forEach(courseTooRecent => {
+                for (let i = 0; i < coursesTooRecent.length; ++i) {
+                  const courseTooRecent = coursesTooRecent[i];
                   if (!stillHaveTime) { return; }
                   if (moment(courseTooRecent.date).add(15, 'days').isSameOrBefore(start)) {
                     const recentCourse = coursesTooRecent.shift();
@@ -887,7 +828,7 @@ router.post('/settings', (req, res) => {
                       return null;
                     }
                   }
-                });
+                }
                 
                 if (moment(course.date).add(15, 'days').isAfter(start)) {
                   coursesTooRecent.push(course)
@@ -900,7 +841,7 @@ router.post('/settings', (req, res) => {
                   stillHaveTime = false
                   return null;
                 }
-              });
+              }
             }
         
             Promise.all(events.map(([course, event], index) => {
@@ -917,7 +858,7 @@ router.post('/settings', (req, res) => {
                 }));
               })
             })).then(() => {
-              const query = { email: req.userData.email };
+              const query = { email: 'mathias.dominique123@gmail.com' };
               const update = { $set: { maxCoursesNumber }};
               const options = { upsert: true };
         
@@ -1015,10 +956,11 @@ const now = new Date();
 NotificationModel.find({ date: { $gte: now }, isOnPauseSince: null }).then((notifs) => {
   if (!notifs?.length) return;
 
-  notifs.forEach((notif) => {
+  for (let i = 0; i < notifs.length; ++i) {
+    const notif = notifs[i];
     const j = scheduleNotif(notif);
     appendInScheduler(notif.course.email, j);
-  });
+  }
 });
 
 function scheduleNotif(notif) {
@@ -1044,9 +986,10 @@ function scheduleNotif(notif) {
 
     new Promise((resolve, reject) => {
       SubscriptionModel.find({ email: notif.course.email }).then((docs) => {
-        docs.forEach((doc) => {
+        for (let i = 0; i < docs.length; ++i) {
+          const doc = docs[i];
           resolve(webpush.sendNotification(doc.sub, JSON.stringify(notificationPayload)));
-        });
+        }
       });
     })
     .then(() => {
@@ -1069,7 +1012,10 @@ function appendInScheduler(email, j) {
 
 function deleteInScheduler(email) {
   if (schedulers.hasOwnProperty(email)) {
-    schedulers[email].forEach(j => j.cancel());
+    for (let i = 0; i < schedulers[email].length; ++i) {
+      const j = schedulers[email][i];
+      j.cancel()
+    }
     delete schedulers[email];
   }
 }
