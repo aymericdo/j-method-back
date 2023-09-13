@@ -391,13 +391,16 @@ router.post('/courses', (req, res) => {
   const course = req.body
   const reminders = [];
   if (req.body.sendToGoogleCalendar) {
-    reminders.push(moment.parseZone(req.headers.now).add(1, 'day').format('YYYY-MM-DD'));
+    const now = moment.parseZone(req.headers.now)
+    const nowHour = now.hour();
+    const startDay = nowHour < 3 ? 0 : 1;
+    reminders.push(now.add(startDay, 'day').format('YYYY-MM-DD'));
     if (req.body.difficulties === 'tough') {
-      reminders.push(moment.parseZone(req.headers.now).add(2, 'day').format('YYYY-MM-DD'));
+      reminders.push(now.add(startDay + 1, 'day').format('YYYY-MM-DD'));
     }
-    reminders.push(moment.parseZone(req.headers.now).add(5, 'day').format('YYYY-MM-DD'));
-    reminders.push(moment.parseZone(req.headers.now).add(15, 'day').format('YYYY-MM-DD'));
-    reminders.push(moment.parseZone(req.headers.now).add(30, 'day').format('YYYY-MM-DD'));
+    reminders.push(now.add(startDay + 4, 'day').format('YYYY-MM-DD'));
+    reminders.push(now.add(startDay + 14, 'day').format('YYYY-MM-DD'));
+    reminders.push(now.add(startDay + 29, 'day').format('YYYY-MM-DD'));
   }
 
   oauth2Client.setCredentials(req.userData.tokens);
