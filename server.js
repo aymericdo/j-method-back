@@ -190,7 +190,7 @@ function createRush(email, startDate, endDate, isDayRevision, indexToStart = 0) 
         const list = [];
         let currentIndex = indexToStart;
 
-        CourseModel.find({ email }).then((courses) => {
+        CourseModel.find({ email, hidden: { $not: { $eq: true } } }).then((courses) => {
           while (stillHaveTime) {
             for (let index = 0; index < courses.length; ++index) {
               const course = courses[index];
@@ -822,7 +822,7 @@ router.post('/settings', (req, res) => {
       WeekendRevisionModel.deleteMany({ 'course.email': email }).then((numRemoved) => {
         WorkDoneModel.find({ 'course.email': email, isFromWE: true }).then((worksDone) => {
           const idsToIgnore = worksDone.map(work => work.course._id)
-          CourseModel.find({ email, _id: { $nin: idsToIgnore } }).then((courses) => {
+          CourseModel.find({ email, hidden: { $not: { $eq: true } }, _id: { $nin: idsToIgnore } }).then((courses) => {
             let courseInCurrentDay = 0;
             while (stillHaveTime) {
               for (let index = 0; index < courses.length; ++index) {
@@ -892,7 +892,7 @@ router.get('/today-classes', (req, res) => {
   const now = new Date(moment.parseZone(req.headers.now).format('YYYY-MM-DD'));
 
   WeekendRevisionModel.find({ 'course.email': email, date: now }).then((weRevisions) => {
-    CourseModel.find({ email, reminders: now }).then((courses) => {
+    CourseModel.find({ email, hidden: { $not: { $eq: true } }, reminders: now }).then((courses) => {
       const realCourses = weRevisions?.map(we => ({ ...we.toObject().course, isFromWE: true })).concat(courses || [])
       WorkDoneModel.find({ 'course.email': email, date: now }).then((docs) => {
         const docsAlreadySeenForTodayIds = docs?.map(doc => doc.course._id.toString()) || []
