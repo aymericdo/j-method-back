@@ -35,6 +35,7 @@ const CourseSchema = new mongoose.Schema({
   reminders: { type: [Date], required: false },
   ids: { type: [String], required: false },
   folder: { type: String, require: false },
+  hidden: { type: Boolean, require: false },
 });
 
 const NotificationSchema = new mongoose.Schema({
