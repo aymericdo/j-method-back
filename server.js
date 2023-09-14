@@ -34,6 +34,7 @@ const CourseSchema = new mongoose.Schema({
   date: { type: Date, required: true },
   reminders: { type: [Date], required: false },
   ids: { type: [String], required: false },
+  folder: { type: String, require: false },
 });
 
 const NotificationSchema = new mongoose.Schema({
@@ -460,14 +461,20 @@ router.patch('/courses/:courseId', (req, res) => {
   const course = req.body
 
   oauth2Client.setCredentials(req.userData.tokens);
-  const googleIds = course.ids
+  const googleIds = course.ids || []
   Promise.all(googleIds.filter(Boolean).map((id) => {
     return patchEvents(oauth2Client, id, { description: course.description })
   })).then(() => {
-    CourseModel.updateOne({ email, _id: courseId }, { description: course.description }).then((docs) => {
-      CourseModel.findOne({ email, _id: courseId }).then((doc) => {
-        res.status(200).json(doc)
-      });
+    CourseModel.findOneAndUpdate(
+      { email, _id: courseId },
+      {
+        $set: {
+          description: course.description,
+          folder: course.folder,
+        }
+      },
+      { new: true }).then((doc) => {
+      res.status(200).json(doc)
     });
   })
 });
