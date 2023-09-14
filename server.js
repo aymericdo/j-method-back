@@ -472,6 +472,7 @@ router.patch('/courses/:courseId', (req, res) => {
         $set: {
           description: course.description,
           folder: course.folder,
+          hidden: course.hidden,
         }
       },
       { new: true }).then((doc) => {
