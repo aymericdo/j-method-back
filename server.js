@@ -52,6 +52,7 @@ const RushSchema = new mongoose.Schema({
   ids: { type: [String], required: true },
   list: { type: [Object], required: true },
   isDayRevision: { type: Boolean, required: true },
+  maxCoursesNumber: { type: Number, required: true },
 }, { timestamps: true });
 
 const SubscriptionSchema = new mongoose.Schema({
@@ -174,7 +175,7 @@ async function cacheToken(tokens) {
   }
 }
 
-function createRush(email, startDate, endDate, isDayRevision, indexToStart = 0) {
+function createRush(email, startDate, endDate, isDayRevision, maxCoursesNumber, indexToStart = 0) {
   myCache.set(`loading-rush-${email}`);
   RushModel.find({ email }).then((docs) => {
     const googleIds = docs.flatMap(doc => doc.ids)
@@ -189,6 +190,7 @@ function createRush(email, startDate, endDate, isDayRevision, indexToStart = 0) 
         const events = [];
         const list = [];
         let currentIndex = indexToStart;
+        let cptByDay = 0;
 
         CourseModel.find({ email, hidden: { $not: { $eq: true } } }).then((courses) => {
           while (stillHaveTime) {
@@ -196,10 +198,10 @@ function createRush(email, startDate, endDate, isDayRevision, indexToStart = 0) 
               const course = courses[index];
               if (currentIndex > 0) {
                 currentIndex -= 1;
-                return;
+                break;
               }
 
-              if (!stillHaveTime) { return; }
+              if (!stillHaveTime) { break; }
 
               const end =
                 (isDayRevision) ?
@@ -264,6 +266,13 @@ function createRush(email, startDate, endDate, isDayRevision, indexToStart = 0) 
                 if (start.hours() === 18 && start.minutes() === 0) {
                   start.add(1, 'day').set({ hour: 8, minute: 0, second: 0 });
                 }
+
+                if (cptByDay + 1 >= maxCoursesNumber) {
+                  cptByDay = 0;
+                  start.add(1, 'day').set({ hour: 8, minute: 0, second: 0 });
+                } else {
+                  cptByDay += 1;
+                }
               }
 
               list.push([isDayRevision ? end.format('YYYY-MM-DD') : end.format(), index]);
@@ -272,6 +281,7 @@ function createRush(email, startDate, endDate, isDayRevision, indexToStart = 0) 
 
               if (start.isSameOrAfter(momentEndDate)) {
                 stillHaveTime = false;
+                break;
               }
             }
           }
@@ -283,6 +293,7 @@ function createRush(email, startDate, endDate, isDayRevision, indexToStart = 0) 
               startDate,
               endDate,
               isDayRevision,
+              maxCoursesNumber,
               email,
               ids,
               list,
@@ -441,12 +452,12 @@ router.post('/courses', (req, res) => {
     course.save().then(() => {
       if (req.body.sendToRush) {
         RushModel.findOne({ email }).then((doc) => {
-          const { startDate, endDate, isDayRevision } = doc;
+          const { startDate, endDate, isDayRevision, maxCoursesNumber } = doc;
           const currentItemPlusOne = doc.list.find(item => moment(item[0]).isSameOrAfter(moment()));
     
           const indexToStart = currentItemPlusOne ? currentItemPlusOne[1] : 0;
     
-          createRush(email, startDate, endDate, isDayRevision, indexToStart);
+          createRush(email, startDate, endDate, isDayRevision, maxCoursesNumber, indexToStart);
         });
       }
 
@@ -549,8 +560,8 @@ router.post('/rush', (req, res) => {
   const email = req.userData.email;
 
   oauth2Client.setCredentials(req.userData.tokens);
-  const { startDate, endDate, isDayRevision } = req.body;
-  createRush(email, startDate, endDate, isDayRevision);
+  const { startDate, endDate, isDayRevision, maxCoursesNumber } = req.body;
+  createRush(email, startDate, endDate, isDayRevision, maxCoursesNumber);
 
   res.status(200).json(true);
 })
@@ -826,31 +837,31 @@ router.post('/settings', (req, res) => {
             while (stillHaveTime) {
               for (let index = 0; index < courses.length; ++index) {
                 const course = courses[index];
-                if (!stillHaveTime) { return; }
+                if (!stillHaveTime) { break; }
                 
                 for (let i = 0; i < coursesTooRecent.length; ++i) {
                   const courseTooRecent = coursesTooRecent[i];
-                  if (!stillHaveTime) { return; }
+                  if (!stillHaveTime) { break; }
                   if (moment(courseTooRecent.date).add(15, 'days').isSameOrBefore(start)) {
                     const recentCourse = coursesTooRecent.shift();
                     courseInCurrentDay = addEventInArray(recentCourse, start, momentEndDate, courseInCurrentDay, maxCoursesNumber, events, courses)
                     if (courseInCurrentDay === -1) {
                       stillHaveTime = false
-                      return null;
+                      break;
                     }
                   }
                 }
                 
                 if (moment(course.date).add(15, 'days').isAfter(start)) {
                   coursesTooRecent.push(course)
-                  return null;
+                  break;
                 }
         
                 courseInCurrentDay = addEventInArray(course, start, momentEndDate, courseInCurrentDay, maxCoursesNumber, events, courses)
         
                 if (courseInCurrentDay === -1) {
                   stillHaveTime = false
-                  return null;
+                  break;
                 }
               }
             }
@@ -869,7 +880,7 @@ router.post('/settings', (req, res) => {
                 }));
               })
             })).then(() => {
-              const query = { email: 'mathias.dominique123@gmail.com' };
+              const query = { email };
               const update = { $set: { maxCoursesNumber }};
               const options = { upsert: true };
         
