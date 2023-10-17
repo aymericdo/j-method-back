@@ -272,7 +272,6 @@ function createRush(email, startDate, endDate, isDayRevision, indexToStart = 0) 
 
               if (start.isSameOrAfter(momentEndDate)) {
                 stillHaveTime = false;
-                return null;
               }
             }
           }
@@ -559,7 +558,7 @@ router.post('/rush', (req, res) => {
 router.delete('/rush', (req, res) => {
   const email = req.userData.email
   myCache.set(`loading-rush-${email}`);
-  
+
   oauth2Client.setCredentials(req.userData.tokens);
   RushModel.find({ email }).then((docs) => {
     const googleIds = docs.flatMap(doc => doc.ids)
