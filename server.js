@@ -474,8 +474,11 @@ router.patch('/courses/:courseId', (req, res) => {
 
   oauth2Client.setCredentials(req.userData.tokens);
   const googleIds = course.ids || []
-  Promise.all(googleIds.filter(Boolean).map((id) => {
-    return patchEvents(oauth2Client, id, { description: course.description })
+  Promise.all(googleIds.filter(Boolean).map((id, index) => {
+    return patchEvents(oauth2Client, id, {
+      description: course.description,
+      colorId: (index < course.advancement) ? colors.GREEN : null,
+    })
   })).then(() => {
     CourseModel.findOneAndUpdate(
       { email, _id: courseId },
