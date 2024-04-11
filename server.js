@@ -36,6 +36,7 @@ const CourseSchema = new mongoose.Schema({
   ids: { type: [String], required: false },
   folder: { type: String, require: false },
   hidden: { type: Boolean, require: false },
+  advancement: { type: Number, require: false },
 });
 
 const NotificationSchema = new mongoose.Schema({
@@ -483,6 +484,7 @@ router.patch('/courses/:courseId', (req, res) => {
           description: course.description,
           folder: course.folder,
           hidden: course.hidden,
+          advancement: course.advancement || 0,
         }
       },
       { new: true }).then((doc) => {
