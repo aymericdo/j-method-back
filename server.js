@@ -37,7 +37,6 @@ const CourseSchema = new mongoose.Schema({
   folder: { type: String, require: false },
   hidden: { type: Boolean, require: false },
   advancement: { type: Number, require: false },
-  advancementFiveByFive: { type: Number, require: false },
   isCurrentFiveByFive: { type: Boolean, require: false },
 });
 
@@ -908,7 +907,7 @@ router.get('/five-by-five', async (req, res) => {
   const email = req.userData.email
 
   const courses = await CourseModel.find({ email, isCurrentFiveByFive: true })
-    .sort({ "advancementFiveByFive": 1 })
+    .sort({ "advancement": 1 })
 
   res.status(200).json(courses);
 });
@@ -942,7 +941,7 @@ router.post('/five-by-five', async (req, res) => {
       }
     }, {
       $sort: {
-        advancementFiveByFive: 1,
+        advancement: 1,
         tmpOrder: 1
       }
     }, {
@@ -956,7 +955,7 @@ router.post('/five-by-five', async (req, res) => {
       {
         $set: {
           isCurrentFiveByFive: true,
-          advancementFiveByFive: course.advancementFiveByFive > 0 ? course.advancementFiveByFive + 1 : 1,
+          advancement: course.advancement > 0 ? course.advancement + 1 : 1,
         },
       },
       {
