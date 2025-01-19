@@ -1,0 +1,3670 @@
+[{
+  "name": "1 - La relation médecin-malade",
+  "description": "1 - La relation médecin-malade dans le cadre du colloque singulier ou au sein d'une équipe, le cas échéant pluriprofessionnelle. La communication avec le patient et son entourage. L'annonce d'une maladie grave ou létale ou d'un dommage associé aux soins. La formation du patient. La personnalisation de la prise en charge médicale.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "2 - Les valeurs professionnelles",
+  "description": "2 - Les valeurs professionnelles du médecin et des autres professions de santé",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "3 - Le raisonnement et la décision",
+  "description": "3 - Le raisonnement et la décision en médecine. La médecine fondée sur les preuves (Evidence Based Medicine, EBM). La décision médicale partagée. La controverse.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "4 - Qualité et sécurité des soins",
+  "description": "4 - Qualité et sécurité des soins. La sécurité du patient. La gestion des risques. Les événements indésirables associés aux soins (EIAS). Démarche qualité et évaluation des pratiques professionnelles",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "5 - La gestion des erreurs",
+  "description": "5 - La gestion des erreurs et des plaintes , l'aléa thérapeutique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "6 - L'organisation de l'exercice clinique",
+  "description": "6 - L'organisation de l'exercice clinique et les méthodes qui permettent de sécuriser le parcours du patient",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "7 - Les droits individuels",
+  "description": "7 - Les droits individuels et collectifs du patient",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "8 - Les discriminations",
+  "description": "8 - Les discriminations",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "9 - Introduction",
+  "description": "9 - Introduction à l’éthique médicale",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "10 - Approches",
+  "description": "10 - Approches transversales du corps",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "11 - Violences",
+  "description": "11 - Violences et santé.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "12 - Violences",
+  "description": "12 - Violences sexuelles",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "13 - Certificats",
+  "description": "13 - Certificats médicaux. Décès et législation.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "14 - La mort",
+  "description": "14 - La mort",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "15 - Soins",
+  "description": "15 - Soins psychiatriques sans consentement",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "16 - Organisation",
+  "description": "16 - Organisation du système de soins. Sa régulation. Les indicateurs. Parcours de soins.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "17 - Télémédecine",
+  "description": "17 - Télémédecine, télésanté et téléservices en santé.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "18 - Santé",
+  "description": "18 - Santé et numérique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "19 - La sécurité sociale",
+  "description": "19 - La sécurité sociale. L'assurance maladie. Les assurances complémentaires. La complémentaire santé solidaire (CSS). La consommation médicale. Protection sociale. Consommation médicale et économie de la santé.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "20 - La méthodologie de la recherche",
+  "description": "20 - La méthodologie de la recherche en santé",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "21 - Mesure",
+  "description": "21 - Mesure de l'état de santé de la population",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "22 - Maladies",
+  "description": "22 - Maladies rares",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "23 - Grossesse",
+  "description": "23 - Grossesse normale",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "24 - Principales",
+  "description": "24 - Principales complications de la grossesse",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "25 - Grossesse",
+  "description": "25 - Grossesse extra-utérine",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "26 - Douleur",
+  "description": "26 - Douleur abdominale aiguë chez une femme enceinte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "27 - Prévention",
+  "description": "27 - Prévention des risques fœtaux : infection, médicaments, toxiques, irradiation",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "28 - Connaître",
+  "description": "28 - Connaître les particularités de l'infection urinaire au cours de la grossesse",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "29 - Connaître",
+  "description": "29 - Connaître les principaux risques professionnels pour la maternité, liés au travail de la mère.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "30 - Prématurité",
+  "description": "30 - Prématurité et retard de croissance intra-utérin : facteurs de risque et prévention",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "31 - Accouchement",
+  "description": "31 - Accouchement, délivrance et suites de couches normales",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "32 - Évaluation",
+  "description": "32 - Évaluation et soins du nouveau-né à terme",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "33 - Allaitement",
+  "description": "33 - Allaitement maternel",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "34 - Suites",
+  "description": "34 - Suites de couches pathologiques : pathologie maternelle dans les 40 jours",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "35 - Anomalies",
+  "description": "35 - Anomalies du cycle menstruel. Métrorragies",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "36 - Contraception",
+  "description": "36 - Contraception",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "37 - Interruption",
+  "description": "37 - Interruption volontaire de grossesse",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "38 - Infertilité",
+  "description": "38 - Infertilité du couple : conduite de la première consultation",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "39 - Assistance",
+  "description": "39 - Assistance médicale à la procréation : principaux aspects biologiques, médicaux et éthiques",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "40 - Algies",
+  "description": "40 - Algies pelviennes chez la femme",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "41 - Endométriose",
+  "description": "41 - Endométriose",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "42 - Aménorrhée",
+  "description": "42 - Aménorrhée",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "43 - Hémorragie",
+  "description": "43 - Hémorragie génitale chez la femme",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "44 - Tuméfaction",
+  "description": "44 - Tuméfaction pelvienne chez la femme",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "45 - Spécificités",
+  "description": "45 - Spécificités des maladies génétiques",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "46 - Médecine",
+  "description": "46 - Médecine génomique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "47 - Suivi",
+  "description": "47 - Suivi d'un nourrisson, d'un enfant et d'un adolescent normal. Dépistage des anomalies orthopédiques, des troubles visuels, auditifs et dentaires. Examens de santé obligatoires. Médecine scolaire. Mortalité et morbidité infantiles.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "48 - Alimentation",
+  "description": "48 - Alimentation et besoins nutritionnels du nourrisson et de l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "49 - Puberté",
+  "description": "49 - Puberté normale et pathologique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "50 - Pathologie",
+  "description": "50 - Pathologie génito-scrotale chez le garçon et chez l'homme",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "51 - Troubles",
+  "description": "51 - Troubles de la miction chez l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "52 - Strabisme",
+  "description": "52 - Strabisme et amblyopie de l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "53 - Retard",
+  "description": "53 - Retard de croissance staturo-pondérale",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "54 - Boiterie",
+  "description": "54 - Boiterie chez l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "55 - Développement",
+  "description": "55 - Développement psychomoteur du nourrisson et de l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "56 - L'enfant handicapé",
+  "description": "56 - L'enfant handicapé : orientation et prise en charge",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "57 - Maltraitance",
+  "description": "57 - Maltraitance et enfants en danger. Protection maternelle et infantile",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "58 - Sexualité",
+  "description": "58 - Sexualité normale et ses troubles",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "59 - Sujets",
+  "description": "59 - Sujets en situation de précarité",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "60 - Connaître",
+  "description": "60 - Connaître les facteurs de risque, prévention, dépistage des troubles psychiques de l'enfant à la personne âgée",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "61 - Connaître",
+  "description": "61 - Connaître les bases des classifications des troubles mentaux de l'enfant à la personne âgée",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "62 - Décrire",
+  "description": "62 - Décrire l'organisation de l'offre de soins en psychiatrie, de l'enfant à la personne âgée",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "63 - Trouble",
+  "description": "63 - Trouble schizophrénique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "64 - Trouble",
+  "description": "64 - Trouble bipolaire",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "65 - Trouble",
+  "description": "65 - Trouble délirant persistant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "66 - Diagnostiquer",
+  "description": "66 - Diagnostiquer : un trouble dépressif, un trouble anxieux généralisé, un trouble panique, un trouble phobique, un trouble obsessionnel compulsif, un état de stress post-traumatique, un trouble de l'adaptation (de l'enfant à la personne âgée), un trouble de la personnalité.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "67 - Troubles",
+  "description": "67 - Troubles envahissants du développement",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "68 - Troubles",
+  "description": "68 - Troubles du comportement de l'adolescent",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "69 - Troubles",
+  "description": "69 - Troubles psychiques de la grossesse et du post-partum",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "70 - Troubles",
+  "description": "70 - Troubles psychiques du sujet âgé",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "71 - Troubles",
+  "description": "71 - Troubles des conduites alimentaires chez l'adolescent et l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "72 - Troubles",
+  "description": "72 - Troubles à symptomatologie somatique et apparentés à tous les âges",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "73 - Différents",
+  "description": "73 - Différents types de techniques psychothérapeutiques",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "74 - Prescription",
+  "description": "74 - Prescription et surveillance des psychotropes",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "75 - Addiction",
+  "description": "75 - Addiction au tabac.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "76 - Addiction",
+  "description": "76 - Addiction à l'alcool.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "77 - Addiction",
+  "description": "77 - Addiction aux médicaments psychotropes (benzodiazépines et apparentés)",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "78 - Addiction",
+  "description": "78 - Addiction au cannabis, à la cocaïne, aux amphétamines, aux opiacés, aux drogues de synthèse",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "79 - Addictions",
+  "description": "79 - Addictions comportementales",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "80 - Dopage",
+  "description": "80 - Dopage et conduites dopantes",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "81 - Altération",
+  "description": "81 - Altération chronique de la vision",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "82 - Altération",
+  "description": "82 - Altération aiguë de la vision",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "83 - Infections",
+  "description": "83 - Infections et inflammations oculaires",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "84 - Glaucomes",
+  "description": "84 - Glaucomes",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "85 - Troubles",
+  "description": "85 - Troubles de la réfraction",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "86 - Pathologie",
+  "description": "86 - Pathologie des paupières",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "87 - Epistaxis",
+  "description": "87 - Epistaxis",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "88 - Trouble",
+  "description": "88 - Trouble aigu de la parole. Dysphonie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "89 - Altération",
+  "description": "89 - Altération de la fonction auditive",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "90 - Pathologie",
+  "description": "90 - Pathologie des glandes salivaires",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "91 - Déficit",
+  "description": "91 - Déficit neurologique récent",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "92 - Déficit",
+  "description": "92 - Déficit moteur et/ou sensitif des membres",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "93 - Compression",
+  "description": "93 - Compression médullaire non traumatique et syndrome de la queue de cheval",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "94 - Rachialgie",
+  "description": "94 - Rachialgie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "95 - Radiculalgie",
+  "description": "95 - Radiculalgie et syndrome canalaire",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "96 - Neuropathies",
+  "description": "96 - Neuropathies périphériques",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "97 - Polyradiculonévrite",
+  "description": "97 - Polyradiculonévrite aiguë inflammatoire (syndrome de Guillain-Barré)",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "98 - Myasthénie",
+  "description": "98 - Myasthénie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "99 - Migraine",
+  "description": "99 - Migraine, névralgie du trijumeau et algies de la face",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "100 - Céphalée",
+  "description": "100 - Céphalée inhabituelle aiguë et chronique chez l'adulte et l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "101 - Paralysie",
+  "description": "101 - Paralysie faciale",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "102 - Diplopie",
+  "description": "102 - Diplopie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "103 - Vertige",
+  "description": "103 - Vertige",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "104 - Sclérose",
+  "description": "104 - Sclérose en plaques",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "105 - Épilepsie",
+  "description": "105 - Épilepsie de l'enfant et de l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "106 - Maladie",
+  "description": "106 - Maladie de Parkinson",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "107 - Mouvements",
+  "description": "107 - Mouvements anormaux",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "108 - Confusion",
+  "description": "108 - Confusion, démences",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "109 - Troubles",
+  "description": "109 - Troubles de la marche et de l'équilibre",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "110 - Troubles",
+  "description": "110 - Troubles du sommeil de l'enfant et de l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "111 - Dermatoses",
+  "description": "111 - Dermatoses faciales : acné, rosacée, dermatite séborrhéique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "112 - Dermatose",
+  "description": "112 - Dermatose bulleuse touchant la peau et/ou les muqueuses externes",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "113 - Hémangiomes",
+  "description": "113 - Hémangiomes et malformations vasculaires cutanées",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "114 - Exanthème",
+  "description": "114 - Exanthème et érythrodermie de l'adulte et de l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "115 - Toxidermies",
+  "description": "115 - Toxidermies",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "116 - Prurit",
+  "description": "116 - Prurit",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "117 - Psoriasis",
+  "description": "117 - Psoriasis",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "118 - La personne handicapée",
+  "description": "118 - La personne handicapée : bases de l'évaluation fonctionnelle et thérapeutique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "119 - Soin et accompagnement",
+  "description": "119 - Soin et accompagnement dans la maladie chronique et le handicap",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "120 - Complications de l'immobilité",
+  "description": "120 - Complications de l'immobilité et du décubitus. Prévention et prise en charge",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "121 - Le handicap psychique",
+  "description": "121 - Le handicap psychique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "122 - Principales techniques de rééducation",
+  "description": "122 - Principales techniques de rééducation et de réadaptation",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "123 - Vieillissement",
+  "description": "123 - Vieillissement normal : aspects biologiques, fonctionnels et relationnels. Données épidémiologiques et sociologiques. Prévention du vieillissement pathologique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "124 - Ménopause",
+  "description": "124 - Ménopause, insuffisance ovarienne prématurée, andropause, déficit androgénique lié à l’âge",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "125 - Troubles",
+  "description": "125 - Troubles de la miction et incontinence urinaire de l'adulte et du sujet âgé",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "126 - Trouble",
+  "description": "126 - Trouble de l'érection",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "127 - Hypertrophie",
+  "description": "127 - Hypertrophie bénigne de la prostate",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "128 - Ostéopathies",
+  "description": "128 - Ostéopathies fragilisantes",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "129 - Arthrose",
+  "description": "129 - Arthrose",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "130 - La personne âgée malade",
+  "description": "130 - La personne âgée malade : particularités sémiologiques, psychologiques et thérapeutiques",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "131 - Troubles",
+  "description": "131 - Troubles de la marche et de l'équilibre",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "132 - Troubles",
+  "description": "132 - Troubles cognitifs du sujet âgé",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "133 - Autonomie",
+  "description": "133 - Autonomie et dépendance chez le sujet âgé",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "134 - Bases",
+  "description": "134 - Bases neurophysiologiques, mécanismes physiopathologiques d'une douleur aiguë et d'une douleur chronique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "135 - Thérapeutiques",
+  "description": "135 - Thérapeutiques antalgiques, médicamenteuses et non médicamenteuses",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "136 - Anesthésie",
+  "description": "136 - Anesthésie locale, locorégionale et générale",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "137 - Douleur",
+  "description": "137 - Douleur chez l'enfant : évaluation et traitements antalgiques",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "138 - Douleur",
+  "description": "138 - Douleur chez la personne vulnérable",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "139 - Soins",
+  "description": "139 - Soins palliatifs pluridisciplinaires chez un malade en phase palliative ou terminale d'une maladie grave, chronique ou létale (1). Principaux repères cliniques. Modalités d'organisation des équipes, en établissement de santé et en et en ambulatoire",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "140 - Soins",
+  "description": "140 - Soins palliatifs pluridisciplinaires chez un malade en phase palliative ou terminale d'une maladie grave, chronique ou létale (2). Accompagnement de la personne malade et de son entourage. Principaux repères éthiques.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "141 - Soins",
+  "description": "141 - Soins palliatifs pluridisciplinaires chez un malade en phase palliative ou terminale d'une maladie grave, chronique ou létale (3). La sédation pour détresse en phase terminale et dans des situations spécifiques et complexes en fin de vie. Réponse à la demande d'euthanasie ou de suicide assisté.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "142 - Connaître",
+  "description": "142 - Connaître les aspects spécifiques des soins palliatifs en pédiatrie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "143 - Connaître",
+  "description": "143 - Connaître les aspects spécifiques des soins palliatifs en réanimation",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "144 - Deuil",
+  "description": "144 - Deuil normal et pathologique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "145 - Surveillance",
+  "description": "145 - Surveillance des maladies infectieuses transmissibles",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "146 - Vaccinations",
+  "description": "146 - Vaccinations",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "147 - Fièvre",
+  "description": "147 - Fièvre aiguë chez l'enfant et l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "148 - Infections",
+  "description": "148 - Infections naso-sinusiennes de l'adulte et de l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "149 - Angines",
+  "description": "149 - Angines de l'adulte et de l'enfant et rhinopharyngites de l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "150 - Otites",
+  "description": "150 - Otites infectieuses de l'adulte et de l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "151 - Méningites",
+  "description": "151 - Méningites, méningoencéphalites, abcès cérébral chez l'adulte et l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "152 - Endocardite",
+  "description": "152 - Endocardite infectieuse",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "153 - Surveillance",
+  "description": "153 - Surveillance des porteurs de valve et prothèses vasculaires",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "154 - Infections",
+  "description": "154 - Infections broncho pulmonaires communautaires de l'adulte et de l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "155 - Infections",
+  "description": "155 - Infections cutanéo-muqueuses et des phanères, bactériennes et mycosiques de l'adulte et de l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "156 - Infections",
+  "description": "156 - Infections ostéo articulaires (IOA) de l'enfant et de l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "157 - Septicémie",
+  "description": "157 - Septicémie/Bactériémie/Fongémie de l'adulte et de l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "158 - Sepsis",
+  "description": "158 - Sepsis et choc septique de l’enfant et de l’adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "159 - Tuberculose",
+  "description": "159 - Tuberculose de l'adulte et de l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "160 - Tétanos",
+  "description": "160 - Tétanos",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "161 - Infections",
+  "description": "161 - Infections urinaires de l'enfant et de l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "162 - Infections",
+  "description": "162 - Infections sexuellement transmissibles (IST) : gonococcies, chlamydioses, syphilis, papillomavirus humain (HPV), trichomonose",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "163 - Coqueluche",
+  "description": "163 - Coqueluche",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "164 - Exanthèmes",
+  "description": "164 - Exanthèmes fébriles de l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "165 - Oreillons",
+  "description": "165 - Oreillons",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "166 - Grippe",
+  "description": "166 - Grippe",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "167 - Hépatites",
+  "description": "167 - Hépatites virales",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "168 - Infections",
+  "description": "168 - Infections à herpès virus du sujet immunocompétent",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "169 - Infections",
+  "description": "169 - Infections à VIH",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "170 - Paludisme",
+  "description": "170 - Paludisme",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "171 - Gale",
+  "description": "171 - Gale et pédiculose",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "172 - Parasitoses",
+  "description": "172 - Parasitoses digestives : giardiose, amoebose, téniasis, ascaridiose, oxyurose, anguillulose, cryptosporidiose.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "173 - Zoonoses",
+  "description": "173 - Zoonoses",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "174 - Pathologie",
+  "description": "174 - Pathologie infectieuse chez les migrants adultes et enfants",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "175 - Voyage",
+  "description": "175 - Voyage en pays tropical de l'adulte et de l'enfant : conseils avant le départ, pathologies du retour : fièvre, diarrhée, manifestations cutanées",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "176 - Diarrhées",
+  "description": "176 - Diarrhées infectieuses de l'adulte et de l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "177 - Prescription",
+  "description": "177 - Prescription et surveillance des anti-infectieux chez l'adulte et l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "178 - Risques",
+  "description": "178 - Risques émergents, bioterrorisme, maladies hautement transmissibles",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "179 - Risques",
+  "description": "179 - Risques sanitaires liés à l'eau et à l'alimentation. Toxi-infections alimentaires",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "180 - Risques",
+  "description": "180 - Risques sanitaires liés aux irradiations. Radioprotection",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "181 - La sécurité sanitaire",
+  "description": "181 - La sécurité sanitaire des produits destinés à l'homme. La veille sanitaire",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "182 - Environnement",
+  "description": "182 - Environnement professionnel et santé au travail",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "183 - Organisation",
+  "description": "183 - Organisation de la médecine du travail. Prévention des risques professionnels",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "184 - Accidents",
+  "description": "184 - Accidents du travail et maladies professionnelles : définitions et enjeux",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "185 - Réaction",
+  "description": "185 - Réaction inflammatoire : aspects biologiques et cliniques. Conduite à tenir",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "186 - Hypersensibilités",
+  "description": "186 - Hypersensibilités et allergies chez l'enfant et l'adulte : aspects physiopathologiques, épidémiologiques, diagnostiques et principes de traitement",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "187 - Hypersensibilités",
+  "description": "187 - Hypersensibilités et allergies cutanéomuqueuses chez l'enfant et l'adulte. Urticaire, dermatites atopique et de contact, conjonctivite allergique.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "188 - Hypersensibilité",
+  "description": "188 - Hypersensibilité et allergies respiratoires chez l'enfant et chez l'adulte. Asthme, rhinite",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "189 - Déficit",
+  "description": "189 - Déficit immunitaire",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "190 - Fièvre",
+  "description": "190 - Fièvre prolongée",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "191 - Fièvre",
+  "description": "191 - Fièvre chez un patient immunodéprimé",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "192 - Pathologies",
+  "description": "192 - Pathologies auto-immunes : aspects épidémiologiques, diagnostiques et principes de traitement",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "193 - Connaître",
+  "description": "193 - Connaître les principaux types de vascularite systémique, les organes cibles, les outils diagnostiques et les moyens thérapeutiques",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "194 - Lupus",
+  "description": "194 - Lupus systémique. Syndrome des anti-phospholipides (SAPL)",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "195 - Artérite",
+  "description": "195 - Artérite à cellules géantes",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "196 - Polyarthrite",
+  "description": "196 - Polyarthrite rhumatoïde",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "197 - Spondyloarthrite",
+  "description": "197 - Spondyloarthrite",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "198 - Arthropathie",
+  "description": "198 - Arthropathie microcristalline",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "199 - Syndrome",
+  "description": "199 - Syndrome douloureux régional complexe (ex algodystrophie)",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "200 - Douleur",
+  "description": "200 - Douleur et épanchement articulaire. Arthrite d'évolution récente",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "201 - Transplantation",
+  "description": "201 - Transplantation d'organes : aspects épidémiologiques et immunologiques , principes de traitement, complications et pronostic , aspects éthiques et légaux. Prélèvements d'organes et législation.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "202 - Biothérapies",
+  "description": "202 - Biothérapies et thérapies ciblées",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "203 - Dyspnée",
+  "description": "203 - Dyspnée aiguë et chronique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "204 - Toux",
+  "description": "204 - Toux chez l'enfant et chez l'adulte (avec le traitement)",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "205 - Hémoptysie",
+  "description": "205 - Hémoptysie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "206 - Épanchement",
+  "description": "206 - Épanchement pleural liquidien",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "207 - Opacités",
+  "description": "207 - Opacités et masses intra-thoraciques chez l'enfant et chez l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "208 - Insuffisance",
+  "description": "208 - Insuffisance respiratoire chronique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "209 - Bronchopneumopathie",
+  "description": "209 - Bronchopneumopathie chronique obstructive chez l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "210 - Pneumopathie",
+  "description": "210 - Pneumopathie interstitielle diffuse",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "211 - Sarcoïdose",
+  "description": "211 - Sarcoïdose",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "212 - Hémogramme",
+  "description": "212 - Hémogramme chez l'adulte et l'enfant : indications et interprétation",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "213 - Anémie",
+  "description": "213 - Anémie chez l'adulte et l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "214 - Thrombopénie",
+  "description": "214 - Thrombopénie chez l'adulte et l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "215 - Purpuras",
+  "description": "215 - Purpuras chez l'adulte et l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "216 - Syndrome",
+  "description": "216 - Syndrome hémorragique d'origine hématologique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "217 - Syndrome",
+  "description": "217 - Syndrome mononucléosique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "218 - Éosinophilie",
+  "description": "218 - Éosinophilie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "219 - Pathologie",
+  "description": "219 - Pathologie du fer chez l'adulte et l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "220 - Adénopathie",
+  "description": "220 - Adénopathie superficielle de l'adulte et de l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "221 - Athérome",
+  "description": "221 - Athérome : épidémiologie et physiopathologie. Le malade poly-athéromateux",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "222 - Facteurs",
+  "description": "222 - Facteurs de risque cardio-vasculaire et prévention",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "223 - Dyslipidémies",
+  "description": "223 - Dyslipidémies",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "224 - Hypertension",
+  "description": "224 - Hypertension artérielle de l'adulte et de l’enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "225 - Artériopathie",
+  "description": "225 - Artériopathie oblitérante de l'aorte, des artères viscérales et des membres inférieurs , anévrysmes",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "226 - Thrombose",
+  "description": "226 - Thrombose veineuse profonde et embolie pulmonaire",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "227 - Insuffisance",
+  "description": "227 - Insuffisance veineuse chronique. Varices",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "228 - Ulcère",
+  "description": "228 - Ulcère de jambe",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "229 - Surveillance",
+  "description": "229 - Surveillance et complications des abords veineux",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "230 - Douleur",
+  "description": "230 - Douleur thoracique aiguë",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "231 - Électrocardiogramme",
+  "description": "231 - Électrocardiogramme : indications et interprétations",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "232 - Fibrillation",
+  "description": "232 - Fibrillation atriale",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "233 - Valvulopathies",
+  "description": "233 - Valvulopathies",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "234 - Insuffisance",
+  "description": "234 - Insuffisance cardiaque de l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "235 - Péricardite",
+  "description": "235 - Péricardite aiguë",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "236 - Troubles",
+  "description": "236 - Troubles de la conduction intracardiaque",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "237 - Palpitations",
+  "description": "237 - Palpitations",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "238 - Souffle",
+  "description": "238 - Souffle cardiaque chez l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "239 - Acrosyndromes",
+  "description": "239 - Acrosyndromes (phénomène de Raynaud, érythermalgie, acrocyanose, engelures, ischémie digitale)",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "240 - Hypoglycémie",
+  "description": "240 - Hypoglycémie chez l'adulte et l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "241 - Goitre",
+  "description": "241 - Goitre, nodules thyroïdiens et cancers thyroïdiens",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "242 - Hyperthyroïdie",
+  "description": "242 - Hyperthyroïdie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "243 - Hypothyroïdie",
+  "description": "243 - Hypothyroïdie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "244 - Adénome",
+  "description": "244 - Adénome hypophysaire",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "245 - Insuffisance",
+  "description": "245 - Insuffisance surrénale chez l'adulte et l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "246 - Gynécomastie",
+  "description": "246 - Gynécomastie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "247 - Diabète",
+  "description": "247 - Diabète sucré de types 1 et 2 de l'enfant et de l'adulte. Complications",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "248 - Prévention",
+  "description": "248 - Prévention primaire par la nutrition chez l'adulte et chez l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "249 - Modifications",
+  "description": "249 - Modifications thérapeutiques du mode de vie (alimentation et activité physique) chez l'adulte et l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "250 - Dénutrition",
+  "description": "250 - Dénutrition chez l'adulte et l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "251 - Amaigrissement",
+  "description": "251 - Amaigrissement à tous les âges",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "252 - Troubles",
+  "description": "252 - Troubles nutritionnels chez le sujet âgé",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "253 - Obésité",
+  "description": "253 - Obésité de l'enfant et de l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "254 - Besoins",
+  "description": "254 - Besoins nutritionnels et grossesse",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "255 - Diabète",
+  "description": "255 - Diabète gestationnel",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "256 - Aptitude",
+  "description": "256 - Aptitude au sport chez l'adulte et l'enfant , besoins nutritionnels chez le sportif",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "257 - Œdèmes",
+  "description": "257 - Œdèmes des membres inférieurs localisés ou généralisés",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "258 - Élévation",
+  "description": "258 - Élévation de la créatininémie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "259 - Protéinurie",
+  "description": "259 - Protéinurie et syndrome néphrotique de chez l'l'adulte et de l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "260 - Hématurie",
+  "description": "260 - Hématurie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "261 - Néphropathie",
+  "description": "261 - Néphropathie glomérulaire",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "262 - Néphropathies",
+  "description": "262 - Néphropathies interstitielles",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "263 - Néphropathies",
+  "description": "263 - Néphropathies vasculaires",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "264 - Insuffisance",
+  "description": "264 - Insuffisance rénale chronique chez l'adulte et l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "265 - Lithiase",
+  "description": "265 - Lithiase urinaire",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "266 - Polykystose",
+  "description": "266 - Polykystose rénale",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "267 - Troubles",
+  "description": "267 - Troubles de l'équilibre acido-basique et désordres hydro-électrolytiques",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "268 - Hypercalcémie",
+  "description": "268 - Hypercalcémie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "269 - Douleurs",
+  "description": "269 - Douleurs abdominales aiguës chez l'enfant et chez l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "270 - Douleurs",
+  "description": "270 - Douleurs lombaires aiguës chez l'enfant et chez l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "271 - Reflux",
+  "description": "271 - Reflux gastro-œsophagien chez le nourrisson, chez l'enfant et chez l'adulte. Hernie hiatale",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "272 - Ulcère",
+  "description": "272 - Ulcère gastrique et duodénal. Gastrite",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "273 - Dysphagie",
+  "description": "273 - Dysphagie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "274 - Vomissements",
+  "description": "274 - Vomissements du nourrisson, de l'enfant et de l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "275 - Splénomégalie",
+  "description": "275 - Splénomégalie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "276 - Hépatomégalie",
+  "description": "276 - Hépatomégalie et masse abdominale",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "277 - Lithiase",
+  "description": "277 - Lithiase biliaire et complications",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "278 - Ictère",
+  "description": "278 - Ictère",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "279 - Cirrhose",
+  "description": "279 - Cirrhose et complications",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "280 - Ascite",
+  "description": "280 - Ascite",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "281 - Pancréatite",
+  "description": "281 - Pancréatite chronique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "282 - Maladies",
+  "description": "282 - Maladies Inflammatoires Chroniques de l'Intestin (MICI) chez l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "283 - Constipation",
+  "description": "283 - Constipation chez l'enfant et l'adulte (avec le traitement)",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "284 - Colopathie",
+  "description": "284 - Colopathie fonctionnelle",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "285 - Diarrhée",
+  "description": "285 - Diarrhée chronique chez l'adulte et l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "286 - Diarrhée",
+  "description": "286 - Diarrhée aiguë et déshydratation chez le nourrisson, l'enfant et l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "287 - Diverticulose",
+  "description": "287 - Diverticulose colique et diverticulite aiguë du sigmoïde",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "288 - Pathologie",
+  "description": "288 - Pathologie hémorroïdaire",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "289 - Hernie",
+  "description": "289 - Hernie pariétale chez l'enfant et l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "290 - Épidémiologie",
+  "description": "290 - Épidémiologie, facteurs de risque, prévention et dépistage des cancers",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "291 - Cancer",
+  "description": "291 - Cancer : cancérogénèse, oncogénétique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "292 - Diagnostic",
+  "description": "292 - Diagnostic des cancers : signes d'appel et investigations para-cliniques , caractérisation du stade , pronostic",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "293 - Le médecin préleveur",
+  "description": "293 - Le médecin préleveur de cellules et/ou de tissus pour des examens d'Anatomie et Cytologie Pathologiques : connaître les principes de réalisation, transmission et utilisation des prélèvements à visée sanitaire et de recherche",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "294 - Traitement",
+  "description": "294 - Traitement des cancers : principales modalités, classes thérapeutiques et leurs complications majeures. La décision thérapeutique pluridisciplinaire et l'information du malade",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "295 - Prise",
+  "description": "295 - Prise en charge et accompagnement d'un malade atteint de cancer à tous les stades de la maladie dont le stade de soins palliatifs en abordant les problématiques techniques, relationnelles, sociales et éthiques. Traitements symptomatiques. Modalités de surveillance.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "296 - Agranulocytose",
+  "description": "296 - Agranulocytose médicamenteuse : conduite à tenir",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "297 - Cancer",
+  "description": "297 - Cancer de l'enfant : particularités épidémiologiques, diagnostiques et thérapeutiques",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "298 - Tumeurs",
+  "description": "298 - Tumeurs de la cavité buccale, naso-sinusiennes et du cavum, et des voies aérodigestives supérieures.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "299 - Tumeurs",
+  "description": "299 - Tumeurs intracrâniennes",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "300 - Tumeurs",
+  "description": "300 - Tumeurs du col utérin, tumeur du corps utérin",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "301 - Tumeurs",
+  "description": "301 - Tumeurs du colon et du rectum",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "302 - Tumeurs",
+  "description": "302 - Tumeurs cutanées, épithéliales et mélaniques",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "303 - Tumeurs",
+  "description": "303 - Tumeurs de l'estomac",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "304 - Tumeurs",
+  "description": "304 - Tumeurs du foie, primitives et secondaires",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "305 - Tumeurs",
+  "description": "305 - Tumeurs de l'œsophage",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "306 - Tumeurs",
+  "description": "306 - Tumeurs de l'ovaire",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "307 - Tumeurs",
+  "description": "307 - Tumeurs des os primitives et secondaires",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "308 - Tumeurs",
+  "description": "308 - Tumeurs du pancréas",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "309 - Tumeurs",
+  "description": "309 - Tumeurs du poumon, primitives et secondaires",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "310 - Tumeurs",
+  "description": "310 - Tumeurs de la prostate",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "311 - Tumeurs",
+  "description": "311 - Tumeurs du rein de l’adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "312 - Tumeurs",
+  "description": "312 - Tumeurs du sein",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "313 - Tumeurs",
+  "description": "313 - Tumeurs du testicule",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "314 - Tumeurs",
+  "description": "314 - Tumeurs vésicales",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "315 - Leucémies",
+  "description": "315 - Leucémies aiguës",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "316 - Syndromes",
+  "description": "316 - Syndromes myélodysplasiques",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "317 - Syndromes",
+  "description": "317 - Syndromes myéloprolifératifs",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "318 - Leucémies",
+  "description": "318 - Leucémies lymphoïdes chroniques",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "319 - Lymphomes",
+  "description": "319 - Lymphomes malins",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "320 - Myélome",
+  "description": "320 - Myélome multiple des os",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "321 - Principe",
+  "description": "321 - Principe du bon usage du médicament",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "322 - La décision thérapeutique",
+  "description": "322 - La décision thérapeutique personnalisée : bon usage dans des situations à risque",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "323 - Analyser",
+  "description": "323 - Analyser et utiliser les résultats des études cliniques dans la perspective du bon usage - analyse critique, recherche clinique et niveaux de preuve.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "324 - Éducation",
+  "description": "324 - Éducation thérapeutique, observance et automédication",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "325 - Identification",
+  "description": "325 - Identification et gestion des risques liés aux médicaments et aux biomatériaux, risque iatrogène, erreur médicamenteuse",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "326 - Cadre",
+  "description": "326 - Cadre réglementaire de la prescription thérapeutique et recommandations pour le bon usage",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "327 - Principes",
+  "description": "327 - Principes de la médecine intégrative, utilité et risques des interventions non médicamenteuses et des thérapies complémentaires",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "328 - Thérapeutiques",
+  "description": "328 - Thérapeutiques non médicamenteuses et dispositifs médicaux",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "329 - Transfusion",
+  "description": "329 - Transfusion sanguine et produits dérivés du sang : indications, complications. Hémovigilance",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "330 - Prescription",
+  "description": "330 - Prescription et surveillance des classes de médicaments les plus courantes chez l'adulte et chez l'enfant, hors anti-infectieux. Connaitre les grands principes thérapeutiques.",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "331 - Arrêt",
+  "description": "331 - Arrêt cardio-circulatoire",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "332 - État",
+  "description": "332 - État de choc. Principales étiologies : hypovolémique, septique, cardiogénique, anaphylactique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "333 - Situations",
+  "description": "333 - Situations sanitaires exceptionnelles",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "334 - Prise",
+  "description": "334 - Prise en charge immédiate pré-hospitalière et à l'arrivée à l'hôpital, évaluation des complications chez : un brûlé, un traumatisé sévère, un traumatisé thoracique, un traumatisé abdominal, un traumatisé des membres et/ou du bassin, un traumatisé du rachis ou vertébro-médullaire, un traumatisé crânien ou crânio-encéphalique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "335 - Orientation",
+  "description": "335 - Orientation diagnostique et conduite à tenir devant un traumatisme maxillo-facial et oculaire",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "336 - Coma",
+  "description": "336 - Coma non traumatique chez l'adulte et chez l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "337 - Principales",
+  "description": "337 - Principales intoxications aiguës",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "338 - Œdème",
+  "description": "338 - Œdème de Quincke et anaphylaxie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "339 - Syndromes",
+  "description": "339 - Syndromes coronariens aigus",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "340 - Accidents",
+  "description": "340 - Accidents vasculaires cérébraux",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "341 - Hémorragie",
+  "description": "341 - Hémorragie méningée",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "342 - Malaise",
+  "description": "342 - Malaise, perte de connaissance, crise convulsive chez l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "343 - État",
+  "description": "343 - État confusionnel et trouble de conscience chez l'adulte et chez l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "344 - Prise",
+  "description": "344 - Prise en charge d'une patiente atteinte de pré-éclampsie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "345 - Malaise",
+  "description": "345 - Malaise grave du nourrisson et mort inattendue du nourrisson",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "346 - Convulsions",
+  "description": "346 - Convulsions chez le nourrisson et chez l'enfant",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "347 - Rétention",
+  "description": "347 - Rétention aiguë d'urine",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "348 - Insuffisance",
+  "description": "348 - Insuffisance rénale aiguë - Anurie",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "349 - Infection",
+  "description": "349 - Infection aiguë des parties molles (abcès, panaris, phlegmon des gaines)",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "350 - Grosse",
+  "description": "350 - Grosse jambe rouge aiguë",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "351 - Agitation",
+  "description": "351 - Agitation et délire aiguë",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "352 - Crise",
+  "description": "352 - Crise d'angoisse aiguë et attaque de panique",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "353 - Risque",
+  "description": "353 - Risque et conduite suicidaires chez l'enfant, l'adolescent et l'adulte : identification et prise en charge",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "354 - Syndrome",
+  "description": "354 - Syndrome occlusif de l'enfant et de l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "355 - Hémorragie",
+  "description": "355 - Hémorragie digestive",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "356 - Appendicite",
+  "description": "356 - Appendicite de l'enfant et de l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "357 - Péritonite",
+  "description": "357 - Péritonite aiguë chez l'enfant et chez l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "358 - Pancréatite",
+  "description": "358 - Pancréatite aiguë",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "359 - Détresse",
+  "description": "359 - Détresse et insuffisance respiratoire aigüe du nourrisson, de l'enfant et de l'adulte",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "360 - Pneumothorax",
+  "description": "360 - Pneumothorax",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "361 - Lésions",
+  "description": "361 - Lésions péri-articulaires et ligamentaires du genou, de la cheville et de l'épaule",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "362 - Prothèses",
+  "description": "362 - Prothèses et ostéosynthèses",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "363 - Fractures",
+  "description": "363 - Fractures fréquentes de l'adulte et du sujet âgé",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "364 - Fractures",
+  "description": "364 - Fractures chez l'enfant : particularités épidémiologiques, diagnostiques et thérapeutiques",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "365 - Surveillance",
+  "description": "365 - Surveillance d'un malade sous plâtre/résine, diagnostiquer une complication",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "366 - Exposition",
+  "description": "366 - Exposition accidentelle aux liquides biologiques : conduite à tenir",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+},
+{
+  "name": "367 - Impact",
+  "description": "367 - Impact de l’environnement sur la santé",
+  "difficulties": "easy",
+  "date": {
+    "$date": "2025-01-17T00:00:00.000Z"
+  },
+  "email": "aymeric.dominique@gmail.com",
+  "hidden": false
+}]

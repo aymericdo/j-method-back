@@ -37,6 +37,8 @@ const CourseSchema = new mongoose.Schema({
   folder: { type: String, require: false },
   hidden: { type: Boolean, require: false },
   advancement: { type: Number, require: false },
+  advancementFiveByFive: { type: Number, require: false },
+  isCurrentFiveByFive: { type: Boolean, require: false },
 });
 
 const NotificationSchema = new mongoose.Schema({
@@ -900,6 +902,81 @@ router.post('/settings', (req, res) => {
   });
 
   res.status(200).json(req.body);
+});
+
+router.get('/five-by-five', async (req, res) => {
+  const email = req.userData.email
+
+  const courses = await CourseModel.find({ email, isCurrentFiveByFive: true })
+    .sort({ "advancementFiveByFive": 1 })
+
+  res.status(200).json(courses);
+});
+
+router.post('/five-by-five', async (req, res) => {
+  const email = req.userData.email
+  const coursesNumber = req.body.coursesNumber
+
+  const oldCourses = await CourseModel.find({ email, isCurrentFiveByFive: true })
+  
+  const courses = await CourseModel.aggregate([
+    {
+      $match: {
+        email,
+        hidden: {
+          $not: {
+            $eq: true
+          }
+        },
+        $or: [{
+          isCurrentFiveByFive: null
+        }, {
+          isCurrentFiveByFive: false
+        }]
+      }
+    }, {
+      $addFields: {
+        tmpOrder: {
+          $rand: {},
+        }
+      }
+    }, {
+      $sort: {
+        advancementFiveByFive: 1,
+        tmpOrder: 1
+      }
+    }, {
+      $limit: coursesNumber
+    }
+  ]).exec()
+
+  for (let course of courses) {
+    await CourseModel.findOneAndUpdate(
+      { email, _id: course._id },
+      {
+        $set: {
+          isCurrentFiveByFive: true,
+          advancementFiveByFive: course.advancementFiveByFive > 0 ? course.advancementFiveByFive + 1 : 1,
+        },
+      },
+      {
+        new: true,
+      })
+  }
+
+  if (oldCourses.length) {
+    await CourseModel.updateMany(
+      { email, _id: { $in: oldCourses.map((oldCourse) => oldCourse._id) } },
+      {
+        $set: {
+          isCurrentFiveByFive: false,
+        },
+      });
+  }
+
+  const newCourses = await CourseModel.find({ email, _id: { $in: courses.map((course) => course._id) } });
+
+  res.status(200).json(newCourses);
 });
 
 router.get('/today-classes', (req, res) => {
